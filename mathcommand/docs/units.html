@@ -1,0 +1,756 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Satuans | Math Notepad</title>
+  <!-- meta data -->
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="title" content="Math Notepad">
+  <meta name="keywords" content="math, notepad, math notepad, mathematics, expression, calculate, function, variable, matrix, complex numbers, units, plot, advanced, calculator, sheet, expression, graph">
+  <meta name="description" content="Math Notepad is a web based editor to do mathematical calculations and plot graphs. It supports real and complex numbers, matrices, and units.">
+  <meta name="author" content="W.J. de Jong">
+
+  <!-- for mobile devices like android and iphone -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+  <link rel="shortcut icon" href="favicon.ico/">
+
+  <link href="../css/mathnotepad.min.css" rel="stylesheet" type="text/css">
+  <script src="../mathnotepad.min.js"></script>
+
+  <link href="doc.css" rel="stylesheet" type="text/css">
+  <script src="doc.js"></script>
+</head>
+
+<body>
+<div id="scroll-root">
+  
+  <div class="main">
+    <h1>Satuans</h1>
+    <p>
+      Math Notepad supports units. Satuans can be used in basic arithmetic
+      operations like add and subtract, and units can be converted from
+      one to another.
+    </p>
+
+    <script type="text/javascript">
+      var container = document.createElement('div');
+      container.classNama = 'examples';
+      document.querySelector('.main').appendChild(container);
+      var editor = new mathnotepad.Editor(container);
+      editor.set({
+        nodes: [
+          {expr: '2 inch in cm'},
+          {expr: '0.5kg + 33g'},
+          {expr: '3 inch + 2 cm'},
+          {expr: 'sin(45 deg)'},
+          {expr: '3.2m * 1.5m'},
+          {expr: '18 km/h in m/s'}
+        ]
+      });
+    </script>
+
+    <p>
+      All available units are listed in the table below.
+    </p>
+
+  <table class="help"><thead>
+    <tr>
+      <th>Basis</th>
+      <th>Satuan</th>
+    </tr>
+    </thead><tbody>
+    <tr>
+      <td>Panjang</td>
+      <td>meter (m), inch (in), foot (ft), yard (yd), mile (mi), link (li), rod (rd), chain (ch), angstrom, mil</td>
+    </tr>
+    <tr>
+      <td>Luas</td>
+      <td>m2, sqin, sqft, sqyd, sqmi, sqrd, sqch, sqmil</td>
+    </tr>
+    <tr>
+      <td>Volume</td>
+      <td>m3, litre (l, L, lt, liter), cc, cuin, cuft, cuyd, teaspoon, tablespoon</td>
+    </tr>
+    <tr>
+      <td>Liquid volume</td>
+      <td>minim (min), fluiddram (fldr), fluidounce (floz), gill (gi), cup (cp), pint (pt), quart (qt), gallon (gal), beerbarrel (bbl), oilbarrel (obl), hogshead, drop (gtt)</td>
+    </tr>
+    <tr>Waktu
+      <td>Sudut</td>
+      <td>rad, deg, grad, cycle</td>
+    </tr>
+    <tr>
+      <td>Waktu</td>
+      <td>second (s), seconds, minute (minutes), hour (h, hours), day (days)</td>
+    </tr>
+    <tr>
+      <td>Massa</td>
+      <td>gram(g), tonne, ton, grain (gr), dram(dr), ounce (oz), poundmass (lbm, lb, lbs), hundredweight (cwt), stick, stone</td>
+    </tr>
+    <tr>
+      <td>Electric current</td>
+      <td>ampere (A)</td>
+    </tr>
+    <tr>
+      <td>Temperature</td>
+      <td>kelvin (K), celsius (degC), fahrenheit (degF), rankine (degR)</td>
+    </tr>
+    <tr>
+      <td>Amount of substance</td>
+      <td>mole (mol)</td>
+    </tr>
+    <tr>
+      <td>Luminous intensity</td>
+      <td>candela (cd)</td>
+    </tr>
+    <tr>
+      <td>Force</td>
+      <td>newton (N), dyne (dyn), poundforce (lbf)</td>
+    </tr>
+    <tr>
+      <td>Energy</td>
+      <td>joule (J), erg, Wh, BTU, electronvolt (eV)</td>
+    </tr>
+    <tr>
+      <td>Power</td>
+      <td>watt (W), hp</td>
+    </tr>
+    <tr>
+      <td>Pressure</td>
+      <td>Pa, psi, atm</td>
+    </tr>
+    <tr>
+      <td>Electricity and magnetism</td>
+      <td>ampere (A), coulomb (C), watt (W), volt (V), ohm, farad (F), weber (Wb), tesla (T), henry (H), siemens (S), electronvolt (eV)</td>
+    </tr>
+    <tr>
+      <td>Binary</td>
+      <td>bit (b), byte (B)</td>
+    </tr>
+    </tbody></table>
+
+    <p>Note that all relevant units can also be written in plural form, for example <code>5 meters</code> instead of <code>5 meter</code> or <code>10 seconds</code> instead of <code>10 second</code>. </p>
+
+    <p>Luas and volume units can alternatively be expressed in terms of length units raised to a power, for example <code>100 in^2</code> instead of <code>100 sqin</code>.</p>
+
+    <h2 id="prefixes">Prefik</h2>
+
+    <p>The following decimal prefixes are available.</p>
+
+    <table class="help"><thead>
+    <tr>
+      <th>Nama</th>
+      <th>Singkatan</th>
+      <th>Nilai</th>
+    </tr>
+    </thead><tbody>
+    <tr>
+      <td>deca</td>
+      <td>da</td>
+      <td>1e1</td>
+    </tr>
+    <tr>
+      <td>hecto</td>
+      <td>h</td>
+      <td>1e2</td>
+    </tr>
+    <tr>
+      <td>kilo</td>
+      <td>k</td>
+      <td>1e3</td>
+    </tr>
+    <tr>
+      <td>mega</td>
+      <td>M</td>
+      <td>1e6</td>
+    </tr>
+    <tr>
+      <td>giga</td>
+      <td>G</td>
+      <td>1e9</td>
+    </tr>
+    <tr>
+      <td>tera</td>
+      <td>T</td>
+      <td>1e12</td>
+    </tr>
+    <tr>
+      <td>peta</td>
+      <td>P</td>
+      <td>1e15</td>
+    </tr>
+    <tr>
+      <td>exa</td>
+      <td>E</td>
+      <td>1e18</td>
+    </tr>
+    <tr>
+      <td>zetta</td>
+      <td>Z</td>
+      <td>1e21</td>
+    </tr>
+    <tr>
+      <td>yotta</td>
+      <td>Y</td>
+      <td>1e24</td>
+    </tr>
+    </tbody></table>
+
+    <table class="help"><thead>
+    <tr>
+      <th>Nama</th>
+      <th>Singkatan</th>
+      <th>Nilai</th>
+    </tr>
+    </thead><tbody>
+    <tr>
+      <td>deci</td>
+      <td>d</td>
+      <td>1e-1</td>
+    </tr>
+    <tr>
+      <td>centi</td>
+      <td>c</td>
+      <td>1e-2</td>
+    </tr>
+    <tr>
+      <td>milli</td>
+      <td>m</td>
+      <td>1e-3</td>
+    </tr>
+    <tr>
+      <td>micro</td>
+      <td>u</td>
+      <td>1e-6</td>
+    </tr>
+    <tr>
+      <td>nano</td>
+      <td>n</td>
+      <td>1e-9</td>
+    </tr>
+    <tr>
+      <td>pico</td>
+      <td>p</td>
+      <td>1e-12</td>
+    </tr>
+    <tr>
+      <td>femto</td>
+      <td>f</td>
+      <td>1e-15</td>
+    </tr>
+    <tr>
+      <td>atto</td>
+      <td>a</td>
+      <td>1e-18</td>
+    </tr>
+    <tr>
+      <td>zepto</td>
+      <td>z</td>
+      <td>1e-21</td>
+    </tr>
+    <tr>
+      <td>yocto</td>
+      <td>y</td>
+      <td>1e-24</td>
+    </tr>
+    </tbody></table>
+
+    <p>The following binary prefixes are available.
+      They can be used with units <code>bit</code> (<code>b</code>) and <code>byte</code> (<code>B</code>).</p>
+
+    <table class="help"><thead>
+    <tr>
+      <th>Nama</th>
+      <th>Singkatan</th>
+      <th>Nilai</th>
+    </tr>
+    </thead><tbody>
+    <tr>
+      <td>kibi</td>
+      <td>Ki</td>
+      <td>1024</td>
+    </tr>
+    <tr>
+      <td>mebi</td>
+      <td>Mi</td>
+      <td>1024^2</td>
+    </tr>
+    <tr>
+      <td>gibi</td>
+      <td>Gi</td>
+      <td>1024^3</td>
+    </tr>
+    <tr>
+      <td>tebi</td>
+      <td>Ti</td>
+      <td>1024^4</td>
+    </tr>
+    <tr>
+      <td>pebi</td>
+      <td>Pi</td>
+      <td>1024^5</td>
+    </tr>
+    <tr>
+      <td>exi</td>
+      <td>Ei</td>
+      <td>1024^6</td>
+    </tr>
+    <tr>
+      <td>zebi</td>
+      <td>Zi</td>
+      <td>1024^7</td>
+    </tr>
+    <tr>
+      <td>yobi</td>
+      <td>Yi</td>
+      <td>1024^8</td>
+    </tr>
+    </tbody></table>
+
+    <table class="help"><thead>
+    <tr>
+      <th>Nama</th>
+      <th>Singkatan</th>
+      <th>Nilai</th>
+    </tr>
+    </thead><tbody>
+    <tr>
+      <td>kilo</td>
+      <td>k</td>
+      <td>1e3</td>
+    </tr>
+    <tr>
+      <td>mega</td>
+      <td>M</td>
+      <td>1e6</td>
+    </tr>
+    <tr>
+      <td>giga</td>
+      <td>G</td>
+      <td>1e9</td>
+    </tr>
+    <tr>
+      <td>tera</td>
+      <td>T</td>
+      <td>1e12</td>
+    </tr>
+    <tr>
+      <td>peta</td>
+      <td>P</td>
+      <td>1e15</td>
+    </tr>
+    <tr>
+      <td>exa</td>
+      <td>E</td>
+      <td>1e18</td>
+    </tr>
+    <tr>
+      <td>zetta</td>
+      <td>Z</td>
+      <td>1e21</td>
+    </tr>
+    <tr>
+      <td>yotta</td>
+      <td>Y</td>
+      <td>1e24</td>
+    </tr>
+    </tbody></table>
+
+    <h2 id="physical-constants">Physical Constants</h2>
+
+    <p>Math Notepad includes the following physical constants. See <a href="https://en.wikipedia.org/wiki/Physical_constants">Wikipedia</a> for more information.</p>
+
+    <h3 id="universal-constants">Universal constants</h3>
+
+    <table class="help"><thead>
+    <tr>
+      <th>Nama</th>
+      <th>Simbol</th>
+      <th>Nilai</th>
+      <th>Satuan</th>
+    </tr>
+    </thead><tbody>
+    <tr>
+      <td>speedOfLight</td>
+      <td><i>c</i></td>
+      <td>299792458</td>
+      <td>m &#183; s<sup>-1</sup></td>
+    </tr>
+    <tr>
+      <td>gravitationConstant</td>
+      <td><i>G</i></td>
+      <td>6.6738480e-11</td>
+      <td>m<sup>3</sup> &#183; kg<sup>-1</sup> &#183; s<sup>-2</sup></td>
+    </tr>
+    <tr>
+      <td>planckConstant</td>
+      <td><i>h</i></td>
+      <td>6.626069311e-34</td>
+      <td>J &#183; s</td>
+    </tr>
+    <tr>
+      <td>reducedPlanckConstant</td>
+      <td><i><span style="text-decoration:overline">h</span></i></td>
+      <td>1.05457172647e-34</td>
+      <td>J &#183; s</td>
+    </tr>
+    </tbody></table>
+
+    <h3 id="electromagnetic">Electromagnetic</h3>
+
+    <table class="help"><thead>
+    <tr>
+      <th>Nama</th>
+      <th>Simbol</th>
+      <th>Nilai</th>
+      <th>Satuan</th>
+    </tr>
+    </thead><tbody>
+    <tr>
+      <td>magneticConstant</td>
+      <td><i>&mu;<sub>0</sub></i></td>
+      <td>1.2566370614e-6</td>
+      <td>N &#183; A<sup>-2</sup></td>
+    </tr>
+    <tr>
+      <td>electricConstant</td>
+      <td><i>&epsilon;<sub>0</sub></i></td>
+      <td>8.854187817e-12</td>
+      <td>F &#183; m<sup>-1</sup></td>
+    </tr>
+    <tr>
+      <td>vacuumImpedance</td>
+      <td><i>Z<sub>0</sub></i></td>
+      <td>376.730313461</td>
+      <td>&ohm;</td>
+    </tr>
+    <tr>
+      <td>coulomb</td>
+      <td><i>&kappa;</i></td>
+      <td>8.9875517873681764e9</td>
+      <td>N &#183; m<sup>2</sup> &#183; C<sup>-2</sup></td>
+    </tr>
+    <tr>
+      <td>elementaryCharge</td>
+      <td><i>e</i></td>
+      <td>1.60217656535e-19</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <td>bohrMagneton</td>
+      <td><i>&mu;<sub>B</sub></i></td>
+      <td>9.2740096820e-24</td>
+      <td>J &#183; T<sup>-1</sup></td>
+    </tr>
+    <tr>
+      <td>conductanceQuantum</td>
+      <td><i>G<sub>0</sub></i></td>
+      <td>7.748091734625e-5</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <td>inverseConductanceQuantum</td>
+      <td><i>G<sub>0</sub><sup>-1</sup></i></td>
+      <td>12906.403721742</td>
+      <td>&ohm;</td>
+    </tr>
+    <tr>
+      <td>magneticFluxQuantum</td>
+      <td><i><font face="Simbol">f</font><sub>0</sub></i></td>
+      <td>2.06783375846e-15</td>
+      <td>Wb</td>
+    </tr>
+    <tr>
+      <td>nuclearMagneton</td>
+      <td><i>&mu;<sub>N</sub></i></td>
+      <td>5.0507835311e-27</td>
+      <td>J &#183; T<sup>-1</sup></td>
+    </tr>
+    <tr>
+      <td>klitzing</td>
+      <td><i>R<sub>K</sub></i></td>
+      <td>25812.807443484</td>
+      <td>&ohm;</td>
+    </tr>
+    </tbody></table>
+
+    <!-- TODO: implement josephson
+    josephson                 | <i>K<sub>J</sub></i>                             | 4.8359787011e-14    | Hz &#183; V<sup>-1</sup>
+    -->
+
+    <h3 id="atomic-and-nuclear-constants">Atomic and nuclear constants</h3>
+
+    <table class="help"><thead>
+    <tr>
+      <th>Nama</th>
+      <th>Simbol</th>
+      <th>Nilai</th>
+      <th>Satuan</th>
+    </tr>
+    </thead><tbody>
+    <tr>
+      <td>bohrRadius</td>
+      <td><i>a<sub>0</sub></i></td>
+      <td>5.291772109217e-11</td>
+      <td>m</td>
+    </tr>
+    <tr>
+      <td>classicalElectronRadius</td>
+      <td><i>r<sub>e</sub></i></td>
+      <td>2.817940326727e-15</td>
+      <td>m</td>
+    </tr>
+    <tr>
+      <td>electronMassa</td>
+      <td><i>m<sub>e</sub></i></td>
+      <td>9.1093829140e-31</td>
+      <td>kg</td>
+    </tr>
+    <tr>
+      <td>fermiCoupling</td>
+      <td><i>G<sub>F</sub></i></td>
+      <td>1.1663645e-5</td>
+      <td>GeV<sup>-2</sup></td>
+    </tr>
+    <tr>
+      <td>fineStructure</td>
+      <td><i>&alpha;</i></td>
+      <td>7.297352569824e-3</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>hartreeEnergy</td>
+      <td><i>E<abbr>h</abbr> </i></td>
+      <td>4.3597443419e-18</td>
+      <td>J</td>
+    </tr>
+    <tr>
+      <td>protonMassa</td>
+      <td><i>m<sub>p</sub></i></td>
+      <td>1.67262177774e-27</td>
+      <td>kg</td>
+    </tr>
+    <tr>
+      <td>deuteronMassa</td>
+      <td><i>m<sub>d</sub></i></td>
+      <td>3.3435830926e-27</td>
+      <td>kg</td>
+    </tr>
+    <tr>
+      <td>neutronMassa</td>
+      <td><i>m<sub>n</sub></i></td>
+      <td>1.6749271613e-27</td>
+      <td>kg</td>
+    </tr>
+    <tr>
+      <td>quantumOfCirculation</td>
+      <td><i>h / (2m<sub>e</sub>)</i></td>
+      <td>3.636947552024e-4</td>
+      <td>m<sup>2</sup> &#183; s<sup>-1</sup></td>
+    </tr>
+    <tr>
+      <td>rydberg</td>
+      <td><i>R<sub>&infin;</sub></i></td>
+      <td>10973731.56853955</td>
+      <td>m<sup>-1</sup></td>
+    </tr>
+    <tr>
+      <td>thomsonCrossSection</td>
+      <td></td>
+      <td>6.65245873413e-29</td>
+      <td>m<sup>2</sup></td>
+    </tr>
+    <tr>
+      <td>weakMixingAngle</td>
+      <td></td>
+      <td>0.222321</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>efimovFactor</td>
+      <td></td>
+      <td>22.7</td>
+      <td>-</td>
+    </tr>
+    </tbody></table>
+
+    <h3 id="physicochemical-constants">Physico-chemical constants</h3>
+
+    <table class="help"><thead>
+    <tr>
+      <th>Nama</th>
+      <th>Simbol</th>
+      <th>Nilai</th>
+      <th>Satuan</th>
+    </tr>
+    </thead><tbody>
+    <tr>
+      <td>atomicMassa</td>
+      <td><i>m<sub>u</sub></i></td>
+      <td>1.66053892173e-27</td>
+      <td>kg</td>
+    </tr>
+    <tr>
+      <td>avogadro</td>
+      <td><i>N<sub>A</sub></i></td>
+      <td>6.0221412927e23</td>
+      <td>mol<sup>-1</sup></td>
+    </tr>
+    <tr>
+      <td>boltzmann</td>
+      <td><i>k</i></td>
+      <td>1.380648813e-23</td>
+      <td>J &#183; K<sup>-1</sup></td>
+    </tr>
+    <tr>
+      <td>faraday</td>
+      <td><i>F</i></td>
+      <td>96485.336521</td>
+      <td>C &#183; mol<sup>-1</sup></td>
+    </tr>
+    <tr>
+      <td>firstRadiation</td>
+      <td><i>c<sub>1</sub></i></td>
+      <td>3.7417715317e-16</td>
+      <td>W &#183; m<sup>2</sup></td>
+    </tr>
+    <tr>
+      <td>loschmidt</td>
+      <td><i>n<sub>0</sub></i></td>
+      <td>2.686780524e25</td>
+      <td>m<sup>-3</sup></td>
+    </tr>
+    <tr>
+      <td>gasConstant</td>
+      <td><i>R</i></td>
+      <td>8.314462175</td>
+      <td>J &#183; K<sup>-1</sup> &#183; mol<sup>-1</sup></td>
+    </tr>
+    <tr>
+      <td>molarPlanckConstant</td>
+      <td><i>N<sub>A</sub> &#183; h</i></td>
+      <td>3.990312717628e-10</td>
+      <td>J &#183; s &#183; mol<sup>-1</sup></td>
+    </tr>
+    <tr>
+      <td>molarVolume</td>
+      <td><i>V<sub>m</sub></i></td>
+      <td>2.241396820e-10</td>
+      <td>m<sup>3</sup> &#183; mol<sup>-1</sup></td>
+    </tr>
+    <tr>
+      <td>sackurTetrode</td>
+      <td></td>
+      <td>-1.164870823</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>secondRadiation</td>
+      <td><i>c<sub>2</sub></i></td>
+      <td>1.438777013e-2</td>
+      <td>m &#183; K</td>
+    </tr>
+    <tr>
+      <td>stefanBoltzmann</td>
+      <td><i>&sigma;</i></td>
+      <td>5.67037321e-8</td>
+      <td>W &#183; m<sup>-2</sup> &#183; K<sup>-4</sup></td>
+    </tr>
+    <tr>
+      <td>wienDisplacement</td>
+      <td><i>b</i></td>
+      <td>2.897772126e-3</td>
+      <td>m &#183; K</td>
+    </tr>
+    </tbody></table>
+
+    <!-- TODO: implement spectralRadiance
+    spectralRadiance    | <i>c<sub>1L</sub></i>        | 1.19104286953e-16  | W &#183; m<sup>2</sup> &#183; sr<sup>-1</sup>
+    -->
+
+    <p>Note that the values of <code>loschmidt</code> and <code>molarNilai</code> are at <code>T = 273.15 K</code> and <code>p = 101.325 kPa</code>.
+      The value of <code>sackurTetrode</code> is at <code>T = 1 K</code> and <code>p = 101.325 kPa</code>.</p>
+
+    <h3 id="adopted-values">Adopted values</h3>
+
+    <table class="help"><thead>
+    <tr>
+      <th>Nama</th>
+      <th>Simbol</th>
+      <th>Nilai</th>
+      <th>Satuan</th>
+    </tr>
+    </thead><tbody>
+    <tr>
+      <td>molarMassa</td>
+      <td><i>M<sub>u</sub></i></td>
+      <td>1e-3</td>
+      <td>kg &#183; mol<sup>-1</sup></td>
+    </tr>
+    <tr>
+      <td>molarMassaC12</td>
+      <td><i>M(<sub>12</sub>C)</i></td>
+      <td>1.2e-2</td>
+      <td>kg &#183; mol<sup>-1</sup></td>
+    </tr>
+    <tr>
+      <td>gravity</td>
+      <td><i>g<sub>n</sub></i></td>
+      <td>9.80665</td>
+      <td>m &#183; s<sup>-2</sup></td>
+    </tr>
+    <tr>
+      <td>atm</td>
+      <td><i>atm</i></td>
+      <td>101325</td>
+      <td>Pa</td>
+    </tr>
+    </tbody></table>
+
+    <h3 id="natural-units">Natural units</h3>
+
+    <table class="help"><thead>
+    <tr>
+      <th>Nama</th>
+      <th>Simbol</th>
+      <th>Nilai</th>
+      <th>Satuan</th>
+    </tr>
+    </thead><tbody>
+    <tr>
+      <td>planckPanjang</td>
+      <td><i>l<sub>P</sub></i></td>
+      <td>1.61619997e-35</td>
+      <td>m</td>
+    </tr>
+    <tr>
+      <td>planckMassa</td>
+      <td><i>m<sub>P</sub></i></td>
+      <td>2.1765113e-8</td>
+      <td>kg</td>
+    </tr>
+    <tr>
+      <td>planckWaktu</td>
+      <td><i>t<sub>P</sub></i></td>
+      <td>5.3910632e-44</td>
+      <td>s</td>
+    </tr>
+    <tr>
+      <td>planckCharge</td>
+      <td><i>q<sub>P</sub></i></td>
+      <td>1.87554595641e-18</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <td>planckTemperature</td>
+      <td><i>T<sub>P</sub></i></td>
+      <td>1.41683385e+32</td>
+      <td>K</td>
+    </tr>
+    </tbody></table>
+
+  </div>
+</div>
+</body>
+</html>

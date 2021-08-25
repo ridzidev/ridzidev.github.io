@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="Content-Security-Policy" content="default-src
+  'none'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://polyfill.io http://www.google-analytics.com https://ssl.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' https://www.mathjax.org https://www.google-analytics.com http://www.google-analytics.com https://img.shields.io https://www.paypalobjects.com; font-src 'self' https://cdn.jsdelivr.net https://fonts.gstatic.com; connect-src 'self' https://ssl.google-analytics.com/ https://cdn.jsdelivr.net">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Beautiful math in all browsers.">
+  <link rel="canonical" href="https://www.mathjax.org/">
+  <link rel="alternate" type="application/atom+xml" href="/feed.xml" title="MathJax Atom feed">
+  <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>MathJax | Beautiful math in all browsers.</title>
+<meta name="generator" content="Jekyll v3.9.0">
+<meta property="og:title" content="MathJax">
+<meta name="author" content="MathJax Consortium">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Beautiful math in all browsers.">
+<meta property="og:description" content="Beautiful math in all browsers.">
+<link rel="canonical" href="https://www.mathjax.org/">
+<meta property="og:url" content="https://www.mathjax.org/">
+<meta property="og:site_name" content="MathJax">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="MathJax">
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"MathJax Consortium"},"description":"Beautiful math in all browsers.","url":"https://www.mathjax.org/","@type":"WebSite","headline":"MathJax","name":"MathJax","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script type="text/javascript" async src="js/main.js"></script>
+
+  <style>
+body {background-color: white;}
+h1   {color: blue;}
+div {border: 3px solid #1F215F;}
+p {color: blue;font-size: 12px;}
+</style>
+
+</head>
+
+
+    <body>
+    <main>
+      
+<section id="features">
+      <div id="MathPreview" class="preview"></div>
+      
+      </div>
+      <div>
+        <p>Tulis text LaTeX dibawah ini: Gunakan \$\$ untuk inline equation dan \$\$ \$\$ untuk equaiton terpisah</p>
+        <textarea id="MathInput" rows="8" style="width: 97%;">
+Untuk $a \ne 0$, Terdapat dua solusi dari persamaan kuadrat \(ax^2 + bx + c = 0\) yaitu:
+$$x = {-b \pm \sqrt{b^2-4ac} \over 2a}.$$
+$\LaTeX$</textarea>
+        <br>
+        </div>
+        <div class="container">
+        <input type="button" value="Render LaTeX" id="renderHTML" onclick="typesetInput()" style="float: right; font-size: initial;">
+            
+          <label style="font-size: 12px">
+          Pilih mode rendering: &nbsp;
+          <select id="Renderer" onchange="setMode(this.value)" style="margin: 0px 0px 0px">
+            <option value="CHTML">CommonHTML</option>
+            <option value="SVG">SVG</option>
+          </select>
+          </label>
+      </div>
+      <div>
+        <p>M. Alfa Ridzi, S.Mat $$\int xdx = \frac12x^2+c$$ render $\LaTeX$ dari MathJax</p>
+      </div>
+</section>
+
+    </body>
+</html>

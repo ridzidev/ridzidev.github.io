@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+
+<html>
+<head>
+  <!-- meta data -->
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <!-- for mobile devices like android and iphone -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+
+  <link href="css/mathnotepad.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div id="scroll-root" style="margin-top: 100px;">
+  <div id="header">
+      <div id="user"></div>
+  <div class="main">
+    <noscript>
+      <p style="color:white; font-weight:bold; background-color:red">
+        Error: Javascript is not enabled on your browser.
+        Javascript is required to run Math Command.
+      </p>
+    </noscript>
+    
+    <p style="color:black; font-weight:bold; background-color:#fff;padding: 10px;">
+        Untuk penjelasan dan list fungsi dapat dilihat disini : 
+        <a style="color:red" href="docs/overview.html">Penjelasan</a>
+      </p>
+
+    <div id="content">
+
+      <div id="app">
+        <div class="loading">Loading...Tunggu Sebentar...Cotto mate kudasai</div>
+      </div>
+    </div>
+
+
+    <script>
+      // show an error on old browsers
+      if (typeof Object.keys === 'undefined') { // simple test for ES5 support
+        document.getElementById('app').innerHTML = '<p class="error">Error: Unsupported browser. Please upgrade your browser.</p>'
+      }
+    </script>
+
+    <!-- load the (large) javascript at the bottom of the page,
+         so the web page quickly shows up with a loading message -->
+    <script src="mathnotepad.js" async></script>
+
+    <!-- Begin Cookie Consent plugin by Silktide - http://silktide.com/cookieconsent -->
+    
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/1.0.9/cookieconsent.min.js"></script>
+    <!-- End Cookie Consent plugin -->
+
+  </div>
+</div>
+</body>
+</html>

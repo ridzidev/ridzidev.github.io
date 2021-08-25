@@ -1,0 +1,373 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Overview | Math Command</title>
+  <!-- meta data -->
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="title" content="Math Command">
+  <meta name="keywords" content="math, notepad, math notepad, mathematics, expression, calculate, function, variable, matrix, complex Bilangan, satuan, plot, advanced, calculator, sheet, expression, graph">
+  <meta name="description" content="Math Command is a web based editor to do mathematical calculations and plot graphs. It mendukung real and complex Bilangan, matrices, and satuan.">
+  <meta name="author" content="W.J. de Jong">
+
+  <!-- for mobile devices like android and iphone -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+  <link rel="shortcut icon" href="favicon.ico/">
+
+  <link href="../css/mathnotepad.css" rel="stylesheet" type="text/css">
+  <script src="../mathnotepad.js"></script>
+
+  <link href="doc.css" rel="stylesheet" type="text/css">
+  <script src="doc.js"></script>
+
+  <style>
+    h1 { color: #1f215f; }
+    h2 { color: #1f215f; }
+    ul { color: #1f215f; }
+    li { color: #1f215f; }
+
+  </style>
+
+</head>
+
+<body>
+<div id="scroll-root">
+  
+  <div class="main">
+    <h1>Penjelasan Sekilas</h1>
+
+    <p>
+      Math command adalah alat untuk melakukan perhitungan matematika sehari-hari.
+      dirancang untuk siswa, mahasiswa, guru, dosen, dll.
+      Hasil perhitungan dapat dilihat tepat dibawah ekspresi setelah di enter.
+      Jika terjadi perubahan diatas, maka semua perhitungan terkait dibawahnya juga akan berubah
+    </p>
+    <p>
+      Berikut beberapa penjelasan:
+    </p>
+    <ul>
+      <li><a href="#algebra">Aljabar</a></li>
+      <li><a href="#Bilangan">Bilangan</a></li>
+      <li><a href="#complex">Bilangan kompleks</a></li>
+      <li><a href="#functions">Fungsi dan Operator</a></li>
+      <li><a href="#graphs">Grafik</a></li>
+      <li><a href="#strings">Kata (strings)</a></li>
+      <li><a href="#comments">Komentar</a></li>
+      <li><a href="#matrices">Matriks</a></li>
+      <li><a href="#satuan">Satuan</a></li>
+      <li><a href="#variables">Variable dan konstanta</a></li>  
+    </ul>
+
+    <p>Daftar Lengkap semua fungsi dan satuan yang tersedia:</p>
+    <ul>
+      <li><a href="functions.html">List Fungsi</a></li>
+      <li><a href="units.html">Satuan</a></li>
+    </ul>
+
+
+
+    <h2 id="algebra"><a style="color:#1f215f;" href="#algebra">Aljabar</a></h2>
+    <p>
+      Math Command didukung oleh Komputasi simbolik CAS . Sehingga dapat melakukan penyederhanaan untuk operasi aljabar seperti penyederhanaan dan turunan
+    </p>
+
+    <p>
+      Contoh penggunaan fungsi <code>simplify</code>:
+    </p>
+
+    <script type="text/javascript">
+      var container = document.createElement('div');
+      container.className = 'examples';
+      document.querySelector('.main').appendChild(container);
+      var editor = new mathnotepad.Editor(container);
+      editor.set({
+        nodes: [
+          {expr: 'simplify("3 + 2 / 4")'},
+          {expr: 'simplify("2x + x")'},
+          {expr: 'f = parse("x * (x + 2 + x)")'},
+          {expr: 'simplified = simplify(f)'},
+          {expr: 'simplified.evaluate({x: 2})'}
+        ]
+      });
+    </script>
+
+    <p>
+      Fungsi <code>derivative</code> untuk mencari turunan:
+    </p>
+
+    <script type="text/javascript">
+      var container = document.createElement('div');
+      container.className = 'examples';
+      document.querySelector('.main').appendChild(container);
+      var editor = new mathnotepad.Editor(container);
+      editor.set({
+        nodes: [
+          {expr: 'derivative("2x^3", "x")'},
+          {expr: 'derivative("2x^3", "x", {simplify: false})'},
+          {expr: 'derivative("2x^2 + 3x + 4", "x")'},
+          {expr: 'derivative("sin(2x)", "x")'},
+          {expr: 'f = parse("x^2 + x")'},
+          {expr: 'x = parse("x")'},
+          {expr: 'df = derivative(f, x)'},
+          {expr: 'df.evaluate({x: 3})'}
+        ]
+      });
+    </script>
+
+
+        <h2 id="Bilangan"><a style="color:#1f215f;" href="#Bilangan">Bilangan</a></h2>
+    <p>
+      Math Command mendukung bilangan pecahan desimal dan dapan dinyatakan dalam notasi ilmiah.
+    </p>
+
+    <script type="text/javascript">
+      var container = document.createElement('div');
+      container.className = 'examples';
+      document.querySelector('.main').appendChild(container);
+      var editor = new mathnotepad.Editor(container);
+      editor.set({
+        nodes: [
+          {expr: '2'},
+          {expr: '4 + (5 * 2)'},
+          {expr: '-3.4'},
+          {expr: '2.1e3'},
+          {expr: '5.1e-2'}
+        ]
+      });
+    </script>
+
+    <h2 id="complex"><a href="#complex">Bilangan Kompleks</a></h2>
+    <p>
+      Bilangan kompleks dapat dibuat dengan satuan imajiner
+      <code>i</code>.
+    </p>
+
+    <script type="text/javascript">
+      var container = document.createElement('div');
+      container.className = 'examples';
+      document.querySelector('.main').appendChild(container);
+      var editor = new mathnotepad.Editor(container);
+      editor.set({
+        nodes: [
+          {expr: 'a = 2 + 3i'},
+          {expr: 'b = 4 - i'},
+          {expr: 'a + b'},
+          {expr: 'a * b'},
+          {expr: 'i * i'},
+          {expr: 'sqrt(-4)'}
+        ]
+      });
+    </script>
+
+
+
+    <h2 id="functions"><a style="color:#1f215f;" href="#functions">Fungsi dan Operator</a></h2>
+    <p>
+      Math Command mendukung semua fungsi biasa
+      (seperti <code>sin</code>, <code>sqrt</code>, <code>exp</code>)
+      dan operator (seperti <code>a + b</code>, <code>a - b</code>,
+      <code>a * b</code>, <code>a / b</code>).
+      bagian dari ekspresi dapat dinyatakan dalam tanda kurung
+      <code>(...)</code>.
+    </p>
+
+    <script type="text/javascript">
+      var container = document.createElement('div');
+      container.className = 'examples';
+      document.querySelector('.main').appendChild(container);
+      var editor = new mathnotepad.Editor(container);
+      editor.set({
+        nodes: [
+          {expr: '2.2 * (3.1 + 1.4)'},
+          {expr: 'sqrt(16)'},
+          {expr: 'log(1000, 3 + 7)'}
+        ]
+      });
+    </script>
+
+    <p>
+      Sangat mungkin untuk membuat fungsi sendiri dengan 0,1,2, atau banyak variable.
+    </p>
+
+    <script type="text/javascript">
+      var container = document.createElement('div');
+      container.className = 'examples';
+      document.querySelector('.main').appendChild(container);
+      var editor = new mathnotepad.Editor(container);
+      editor.set({
+        nodes: [
+          {expr: 'f(x, y) = x ^ y - y^x'},
+          {expr: 'f(7, 8)'}
+        ]
+      });
+    </script>
+
+
+
+
+    <h2 id="graphs"><a style="color:#1f215f;" href="#graphs">Grafik fungsi</a></h2>
+    <p>
+      Grafik fungsi dapat digambarkan dengan fungsi <code>plot</code>.
+      Grafik dapat digerakan atau diperbesar dengan menggeser dan menggulirkan grafik.
+
+      Grafik dapat digambarkan dengan satu atau banyak fungsi sekaligus. Anda dapat menggunakan variabel secara bebas seperti x,t, dll.
+    </p>
+
+    <script type="text/javascript">
+      var container = document.createElement('div');
+      container.className = 'examples';
+      document.querySelector('.main').appendChild(container);
+      var editor = new mathnotepad.Editor(container);
+      editor.set({
+        nodes: [
+          {expr: 'f(x) = sqrt(x ^ 2 + 2)'},
+          {expr: 'plot(sin(x), f(x), sin(1/x))'}
+        ]
+      });
+    </script>
+
+
+
+    <h2 id="matrices"><a style="color:#1f215f;" href="#matrices">Matriks</a></h2>
+
+    <p>
+      Math Command mendukung matrik dimensi-n. Matrik dibentuk dengan tanda kurung siku. Nilai pada baris dipisahkan dengan tanda koma (,) dan nilai pada kolom dipisahkan dengan semicolon (;)
+      Suatu subset dari sebuah matriks dapat diambil dengan indeks diantara kurung siku <code>matrix[...]</code>,
+      dengan cara yang sama, suatu subset dapat diganti dengan , <code>matrix[...] = [...]</code>
+    </p>
+    <p>
+      Perlu diperhatikan bahwa semakin besar suatu matriks maka semakin lama proses perhitungannya.
+    </p>
+
+    <p>
+      Sintak yang digunakan nyaris seperti aplikasi matematika lainnya, sebagai contoh:
+    </p>
+
+    
+    <script type="text/javascript">
+      var container = document.createElement('div');
+      container.className = 'examples';
+      document.querySelector('.main').appendChild(container);
+      var editor = new mathnotepad.Editor(container);
+      editor.set({
+        nodes: [
+          {expr: 'a = [1, 2, 3; 4, 5, 6]'},
+          {expr: 'b = [1, 2; 3, 4]'},
+          {expr: 'c = diag(1:4)'},
+          {expr: 'size(a)'},
+          {expr: 'a[2, 1]'},
+          {expr: 'a[:, 2:3]'},
+          {expr: 'b[2, 1] = 8'},
+          {expr: 'c[2:3, 2:3] = ones(2, 2) * 5'}
+        ]
+      });
+    </script>
+
+
+    <h2 id="satuan"><a style="color:#1f215f;" href="#satuan">Satuan</a></h2>
+    <p>
+      Math Command mendukung satuan. Satuan dapat digunakan dalam aritmatika dasar, operasi seperti tambah dan kurang. Semua satuan dapat dilihat <a href="units.html">disini</a>.
+    </p>
+
+    <script type="text/javascript">
+      var container = document.createElement('div');
+      container.className = 'examples';
+      document.querySelector('.main').appendChild(container);
+      var editor = new mathnotepad.Editor(container);
+      editor.set({
+        nodes: [
+          {expr: '2 inch in cm'},
+          {expr: '0.5kg + 33g'},
+          {expr: '3 inch + 2 cm'},
+          {expr: 'sin(45 deg)'}
+        ]
+      });
+    </script>
+
+    <h2 id="strings"><a style="color:#1f215f;" href="#strings">Kata</a></h2>
+    <p>
+      Kata dapat dibentuk dalam double quotes <code>"</code>.
+    </p>
+
+    <script type="text/javascript">
+      var container = document.createElement('div');
+      container.className = 'examples';
+      document.querySelector('.main').appendChild(container);
+      var editor = new mathnotepad.Editor(container);
+      editor.set({
+        nodes: [
+          {expr: '"hallo"'},
+          {expr: 'a = concat("Apa", " kabar")'},
+          {expr: 'a[1:5]'},
+          {expr: 'a[1] = "H"'},
+          {expr: 'a[7:12] = "there!"'},
+          {expr: 'number("300")'},
+          {expr: 'string(300)'}
+        ]
+      });
+    </script>
+
+    <h2 id="comments"><a style="color:#1f215f;" href="#comments">Komentar</a></h2>
+    <p>
+      Komentar dapat ditambahkan untuk menjelaskan perhitungan dalam bentuk teks. Komentar dapat ditulis dengan menggunakan tanda pagar
+      <code>#</code>. Komentar juga dapat ditambahkan disamping ekspresi perhitungan.
+    </p>
+
+    <script type="text/javascript">
+      var container = document.createElement('div');
+      container.className = 'examples';
+      document.querySelector('.main').appendChild(container);
+      var editor = new mathnotepad.Editor(container);
+      editor.set({
+        nodes: [
+          {expr: '# definisikan suatu variabel'},
+          {expr: 'panjang = 10;\nlebar = 4;'},
+          {expr: 'panjang * lebar   # menghitung luas persegi panjang'}
+        ]
+      });
+    </script>
+
+
+    <h2 id="variables"><a style="color:#1f215f;" href="#variables">Variabel dan konstanta</a></h2>
+    <p>
+      Math Command mendukung konstanta matematika seperti<code>pi</code>
+      dan <code>e</code>.
+    </p>
+
+    <script type="text/javascript">
+      var container = document.createElement('div');
+      container.className = 'examples';
+      document.querySelector('.main').appendChild(container);
+      var editor = new mathnotepad.Editor(container);
+      editor.set({
+        nodes: [
+          {expr: 'pi'},
+          {expr: 'sin(pi / 4)'},
+          {expr: 'e ^ 2'}
+        ]
+      });
+    </script>
+
+    <p>
+      Variabel baru dapat didefinisikan dengan tanda sama dengan =.
+    </p>
+
+    <script type="text/javascript">
+      var container = document.createElement('div');
+      container.className = 'examples';
+      document.querySelector('.main').appendChild(container);
+      var editor = new mathnotepad.Editor(container);
+      editor.set({
+        nodes: [
+          {expr: 'a = 3.4'},
+          {expr: 'b = 5 / 2'},
+          {expr: 'a * b'}
+        ]
+      });
+    </script>
+
+  </div>
+</div>
+</body>
+</html>

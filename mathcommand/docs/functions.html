@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Functions | Math Command</title>
+  <!-- meta data -->
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="title" content="Math Notepad">
+  <meta name="keywords" content="math, notepad, math notepad, mathematics, expression, calculate, function, variable, matrix, complex numbers, units, plot, advanced, calculator, sheet, expression, graph">
+  <meta name="description" content="Math Notepad is a web based editor to do mathematical calculations and plot graphs. It supports real and complex numbers, matrices, and units.">
+  
+  <!-- for mobile devices like android and iphone -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+  <link rel="shortcut icon" href="favicon.ico/">
+
+  <link href="../css/mathnotepad.css" rel="stylesheet" type="text/css">
+  <script src="../mathnotepad.js"></script>
+
+  <link href="doc.css" rel="stylesheet" type="text/css">
+  <script src="doc.js"></script>
+</head>
+
+<body>
+<div id="scroll-root">
+  
+  <div class="main">
+    <h1>Fungsi</h1>
+
+    <!-- TODO: search field
+    <form class='search' name='search' id="search" action='javascript: searchKeyword(document.getElementById("keyword").value);' method='get'>
+            <input type='text'
+                   id='keyword'
+                   style='border: 1px solid gray; width: 150px;'
+                   name='keyword'
+                   title='Enter a function, constant, unit, or category'
+                   value='' />
+            <input type='submit' value='Search' />
+        </form>
+    -->
+
+    <div id="overview">
+
+      <p>
+        Anda dapat menggunakan fungsi-fungsi dasar seperti
+        (<code>sin</code>, <code>sqrt</code>, <code>exp</code>)
+        dan operator (seperti <code>a + b</code>, <code>a - b</code>,
+        <code>a * b</code>, <code>a / b</code>).
+        bagian dari ekspresi dapat dilakukan didalam tanda kurung
+        <code>(...)</code> untuk mengganti urutan perhitungan dasar.
+      </p>
+
+      <div id="examples" class="examples"></div>
+      <script type="text/javascript">
+        var container = document.getElementById('examples');
+        var editor = new mathnotepad.Editor(container);
+        editor.set({
+          nodes: [
+            {expr: '2.2 * (3.1 + 1.4)'},
+            {expr: 'sqrt(16)'},
+            {expr: 'log(1000, 3 + 7)'}
+          ]
+        });
+      </script>
+
+      <p>
+        Semua fungsi yang tersedia dapat dilihat pada daftar berikut:
+      </p>
+    <div id="functions"></div>
+    </div>
+
+    <div id="content"></div>
+  </div>
+  <script>
+    loadDocs();
+  </script>
+</div>
+</body>
+</html>
