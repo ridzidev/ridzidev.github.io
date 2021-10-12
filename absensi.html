@@ -1,0 +1,143 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1" /> 
+   <link href="style.css" rel="stylesheet" />
+   <title>Absensi Tutor Primitif Learning</title>
+
+<style type="text/css">
+  input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 100%;
+  background-color: #1f215f;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #1f215f;
+}
+
+div {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+
+.header {
+  padding: 20px;
+  text-align: center;
+  background: #1f215f;
+  color: white;
+  font-size: 12px;
+}
+
+</style>
+
+
+</head>
+ 
+<body>
+ <!--
+This code will display a form,
+which will save data to the Spreadsheet within Sheet "Sheet1".
+-->
+
+<!--
+This code will display a form,
+which will save data to the Spreadsheet within Sheet "Sheet1".
+-->
+
+ <div class="header">
+   
+<center>
+<h1>
+  Absensi Tutor <p id="bulan"></p>
+</h1>
+</center>
+
+</div>
+
+
+<div>
+<form data-spreadsheet-api="https://sheet2api.com/v1/3sQttVHoRwyF/absen-tutor-oktober-2021/Sheet1">
+    <input type="text" name="Nama Tutor" placeholder="Nama Tutor" />
+    <input type="text" name="Nama Siswa" placeholder="Nama Siswa" />
+    <input type="text" name="instansi/sekolah" placeholder="Instansi/Sekolah" />
+    <input type="text" name="Pelajaran/topik/bidang" placeholder="Pelajaran/Topik/Bidang" />
+    <input type="text" name="Tanggal Mengajar" placeholder="Tanggal Mengajar" />
+    <input type="text" name="waktu" placeholder="Waktu" />
+    <input type="text" name="catatan" placeholder="Catatan" />
+    
+
+    <input type="submit" value="Submit" onClick="alert('Submitted')">
+</form>
+<script src="https://sheet2api.com/v1/template.js"></script>
+</div>
+
+</div>
+<hr>
+<p id="tanggal"></p>
+<hr>
+Semangat Terus Para Tutor Primitif Hebat🙏<br>Salam Hormat</br>
+<br></br>
+
+<u>M. Alfa Ridzi, S.Mat</u><br>Founder/CEO</br>
+</div>
+<hr>
+<p style="color: blue;">©primitiflearning.me</p>
+<script>
+var date = new Date();
+
+var date = new Date();var tahun = date.getFullYear();
+var bulan = date.getMonth();
+var tanggal = date.getDate();
+var hari = date.getDay();var jam = date.getHours();
+var menit = date.getMinutes();
+var detik = date.getSeconds();switch(hari) {
+ case 0: hari = "Minggu"; break;
+ case 1: hari = "Senin"; break;
+ case 2: hari = "Selasa"; break;
+ case 3: hari = "Rabu"; break;
+ case 4: hari = "Kamis"; break;
+ case 5: hari = "Jum'at"; break;
+ case 6: hari = "Sabtu"; break;
+}switch(bulan) {
+ case 0: bulan = "Januari"; break;
+ case 1: bulan = "Februari"; break;
+ case 2: bulan = "Maret"; break;
+ case 3: bulan = "April"; break;
+ case 4: bulan = "Mei"; break;
+ case 5: bulan = "Juni"; break;
+ case 6: bulan = "Juli"; break;
+ case 7: bulan = "Agustus"; break;
+ case 8: bulan = "September"; break;
+ case 9: bulan = "Oktober"; break;
+ case 10: bulan = "November"; break;
+ case 11: bulan = "Desember"; break;
+}var tampilTanggal = "" + hari + ", " + tanggal + " " + bulan + " " + tahun + "<br></br>";
+var tampilWaktu = "Pukul: " + jam + ":" + menit + ":" + detik;
+
+
+document.getElementById("tanggal").innerHTML = tampilTanggal+tampilWaktu;
+document.getElementById("bulan").innerHTML = bulan +" "+tahun;
+</script>
+
+</body>
+ 
+</html>
