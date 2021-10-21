@@ -1,9 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+<script src="http://code.jquery.com/jquery-2.2.1.min.js"></script>
 <head>
     <title>Materi - Primitif Learning</title>
      <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <style>
+
+    body { 
+           background-image: radial-gradient(circle, #a8eb12, #00c67d, #0094b2, #005ba5, #1f215f);
+         font-weight: 900;
+    }
+
         table {
             width: 300px;
             border-collapse: collapse;
@@ -15,14 +22,58 @@
             padding: 10px;
             text-align: left;
         }
+
+        .preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  background-color: #fff;
+}
+.preloader .loading {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  font: 14px arial;
+}
+
+a {
+    color: white;
+    text-shadow: 0 0 3px #1f215f;
+}
+th {
+    color: 1f215f;
+    text-shadow: 0 0 3px white;
+}
+
+
+
+
+
     </style>
 </head>
 <body>
+
+    <div class="preloader">
+  <div class="loading">
+    <img src="poi.gif" width="80">
+    <p>Harap Tunggu</p>
+  </div>
+</div>
+
+
     <center>
-    <h1 style="color: #1f215f;">Materi SMA</h1>
-    
+    <h1 style="color: #fff;">Materi SMA</h1>
+<hr style="color:white;">
+
+<small style="color:white;">Berikut rangkuman beberapa materi SMA, klik beberapa kali jika buku belum muncul.
+<br></br>Materi tingkatan lainnya akan di update secara berkala.</small>
+<br></br>    
     <table>
-        <thead>
+    <thead>
             <tr>
                 <th>IPA</th>
                 <th>IPS</th>
@@ -44,17 +95,17 @@
             </tr>
 
             <tr>
-                <td> <a href="http://docs.google.com/gview?embedded=true&url=https://primitiflearning.me/materi/sma/fisika.pdf">fisika</a></td>
+                <td> <a href="http://docs.google.com/gview?embedded=true&url=https://primitiflearning.me/materi/sma/fisika.pdf">Fisika</a></td>
 
-                <td> <a href="http://docs.google.com/gview?embedded=true&url=https://primitiflearning.me/materi/sma/sejarah.pdf">sejarah</a></td>
+                <td> <a href="http://docs.google.com/gview?embedded=true&url=https://primitiflearning.me/materi/sma/sejarah.pdf">Sejarah</a></td>
         
 
             </tr>
 
             <tr>
-                <td> <a href="http://docs.google.com/gview?embedded=true&url=https://primitiflearning.me/materi/sma/kimia.pdf">kimia</a></td>
+                <td> <a href="http://docs.google.com/gview?embedded=true&url=https://primitiflearning.me/materi/sma/kimia.pdf">Kimia</a></td>
 
-                <td> <a href="http://docs.google.com/gview?embedded=true&url=https://primitiflearning.me/materi/sma/sosiologi.pdf">sosiologi</a></td>
+                <td> <a href="http://docs.google.com/gview?embedded=true&url=https://primitiflearning.me/materi/sma/sosiologi.pdf">Sosiologi</a></td>
 
             </tr>
         </tbody>
@@ -76,7 +127,7 @@
 
 
             <tr>
-                <td> <a href="http://docs.google.com/gview?embedded=true&url=https://primitiflearning.me/materi/sma/bahasa-inggris.pdf">Bahasa inggris</a></td>
+                <td> <a href="http://docs.google.com/gview?embedded=true&url=https://primitiflearning.me/materi/sma/bahasa-inggris.pdf">Bahasa Inggris</a></td>
             </tr>
 
             <tr>
@@ -85,7 +136,38 @@
 
             
     </table>
-
+<br></br>
+<hr style="color:white;">
     </center>
+    <script>
+$(document).ready(function(){
+$(".preloader").delay(1500).fadeOut('slow');
+})
+</script>
+
+<script type="text/javascript">
+    
+    $(document).ready(function () {
+     // Handler for .ready() called.
+     $("a").click(function(){
+         $('html, body').animate({
+             scrollTop: $('#what').offset().top
+        }, 'slow');
+    });
+});
+</script>
+
+<br></br>
+<br></br>
+<br></br>
+<br></br>
+<br></br>
+<br></br>
+<br></br>
+<br></br>
+<br></br>
+<br></br>
+<br><small style="color:white;">2021©primitiflearning.me : M. Alfa Ridzi,S.Mat</small> </br>
+
 </body>
 </html>
