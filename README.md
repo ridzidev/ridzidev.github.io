@@ -1,5 +1,5 @@
 # Primitif Learning App
 
-Update tanggal 28 Februari 
+Update tanggal 25 desember
 
-2021 , 10:38 WIB
+2021 , 17:58 WIB
