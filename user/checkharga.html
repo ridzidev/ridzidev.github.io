@@ -292,7 +292,6 @@ p2 {
   <option value="2" onclick="myFunction1()">2x Pertemuan</option>
   <option value="4" onclick="myFunction1()">4x Pertemuan</option>
   <option value="8" onclick="myFunction1()">8x Pertemuan</option>
-  <option value="0" onclick="myFunction1()">Lainnya</option>
 </select>
   <p2 id="optionNumber" style="display: none;" >
     <label for="fname">Isi Banyak pertemuanPertemuan: </label>
@@ -342,7 +341,7 @@ p2 {
     <td class="tg-0pky"><p id="pertemuan"></p></td>
   </tr>
   <tr>
-    <td class="tg-c3ow" colspan="2"><u>Biaya Total/Orang:</u> <p id="totalcoret" style="color: red; text-decoration: line-through;"></p><p id="total" style="font-weight: bolder; color: black;"></p>
+    <td class="tg-c3ow" colspan="2"><u>Biaya Total Paket</u> <p id="totalcoret" style="color: red; text-decoration: line-through;"></p><p id="total" style="font-weight: bolder; color: black;"></p>
 
     </td>
   </tr>
@@ -459,7 +458,7 @@ p2 {
   
   
 
-  biayatotal = "Rp." + (x*harga-(x-1)/14*harga).toLocaleString();
+  biayatotal = "Rp." + (z*(x*harga-(x-1)/14*harga)).toLocaleString();
 
   document.getElementById("total").innerHTML = biayatotal;
   
@@ -467,7 +466,7 @@ p2 {
   document.getElementById("hargaperorang").innerHTML = "Rp."+((x*harga-(x-1)/14*harga)/x).toLocaleString();
 
 
-  document.getElementById("totalcoret").innerHTML = "Rp." + (x*harga).toLocaleString(); 
+  document.getElementById("totalcoret").innerHTML = "Rp." + (z*(x*harga)).toLocaleString(); 
   document.getElementById("tingkatan").innerHTML = (tingkat);
   document.getElementById("pertemuan").innerHTML = x+"x Pertemuan";
   document.getElementById("peserta").innerHTML = z+" Orang";
