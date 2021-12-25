@@ -457,13 +457,12 @@ p2 {
   document.getElementById("jenisles").innerHTML = textjudul;
   
   
-
-  biayatotal = "Rp." + (z*(x*harga-(x-1)/14*harga)).toLocaleString();
+  biayatotal = "Rp."+ (z*x*(Math.round(((x*harga-(x-1)/14*harga)/x)/1000)*1000)).toLocaleString();
 
   document.getElementById("total").innerHTML = biayatotal;
   
   document.getElementById("hargaperorangcoret").innerHTML = "Rp."+(harga).toLocaleString();
-  document.getElementById("hargaperorang").innerHTML = "Rp."+((x*harga-(x-1)/14*harga)/x).toLocaleString();
+  document.getElementById("hargaperorang").innerHTML = "Rp."+ (Math.round(((x*harga-(x-1)/14*harga)/x)/1000)*1000).toLocaleString();
 
 
   document.getElementById("totalcoret").innerHTML = "Rp." + (z*(x*harga)).toLocaleString(); 
