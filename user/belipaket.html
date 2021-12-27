@@ -1,239 +1,20 @@
-<!doctype html>
+<!DOCTYPE HTML>
 <html>
 <head>
-	<title>Beli Paket - Primitif Learning</title>
-	 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1" /> 
+   <link href="style.css" rel="stylesheet" />
+   <title>Pendaftaran Peserta Baru</title>
+
 <style type="text/css">
-
-.tg  {border-collapse:collapse;border-spacing:0;}
-.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-  overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg .tg-ntt9{background-color:#ffffff;border-color:#ffffff;color:#ffffff;text-align:left;vertical-align:top}
-.tg .tg-8bgf{border-color:inherit;font-style:italic;text-align:center;vertical-align:top}
-.tg .tg-c3ow{border-color:inherit;text-align:center;vertical-align:top}
-.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
-.tg .tg-0lax{text-align:left;vertical-align:top}
-
-		*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-:root {
-  --select-border: #777;
-  --select-focus: #1f215f;
-  --select-arrow: var(--select-border);
-}
-
-div {
-	background-color: white;
-	padding: 5px;
-	border: 1.5px solid #1f215f;
-  	border-radius: 5px;
-}
-
-div2 {
-  background-color: white;
-  padding: 15px;
-  border: 1.5px solid #1f215f;
-    border-radius: 5px;
-}
-
-
-
-select {
-
-  // A reset of styles, including removing the default dropdown arrow
-  appearance: none;
-  background-color: transparent;
-  border: none;
-  padding: 0 1em 0 0;
-  margin: 0;
-  width: 100%;
-  font-family: inherit;
-  font-size: inherit;
-  cursor: inherit;
-  line-height: inherit;
-
-  // Stack above custom arrow
-  z-index: 1;
-
-  // Remove dropdown arrow in IE10 & IE11
-  // @link https://www.filamentgroup.com/lab/select-css.html
-  &::-ms-expand {
-    display: none;
-  }
-
-  // Remove focus outline, will add on alternate element
-  outline: none;
-}
-
-.select {
-	background-color: #1f215f;
-  display: grid;
-  grid-template-areas: "select";
-  align-items: center;
-  position: relative;
-
-  select,
-  &::after {
-    grid-area: select;
-  }
-
-  min-width: 15ch;
-  max-width: 30ch;
-
-  border: 1px solid var(--select-border);
-  border-radius: 0.25em;
-  padding: 0.25em 0.5em;
-
-  background-color: #1f215f;
-
-  font-size: 1.25rem;
-  cursor: pointer;
-  line-height: 1.1;
-
-  // Optional styles
-  // remove for transparency
-  background-color: #fff;
-  background-image: linear-gradient(to top, #f9f9f9, #fff 33%);
-
-  // Custom arrow
-  &:not(.select--multiple)::after {
-    content: "";
-    justify-self: end;
-    width: 0.8em;
-    height: 0.5em;
-    background-color: var(--select-arrow);
-    clip-path: polygon(100% 0%, 0 0%, 50% 100%);
-  }
-}
-
-// Interim solution until :focus-within has better support
-select:focus + .focus {
-  position: absolute;
-  top: -1px;
-  left: -1px;
-  right: -1px;
-  bottom: -1px;
-  border: 2px solid var(--select-focus);
-  border-radius: inherit;
-  background-color: #1f215f;
-}
-
-button {
-  background-color: #1f215f; /* Green */
-  border: none;
-  color: white;
-  padding: 10px 25px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  border-radius: 5px;
-
-}
-
-.vertical-center {
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-}
-
-select[multiple] {
-  padding-right: 0;
-
-  /*
-   * Safari will not reveal an option
-   * unless the select height has room to 
-   * show all of it
-   * Firefox and Chrome allow showing 
-   * a partial option
-   */
-  height: 6rem;
-
-  option {
-    white-space: normal;
-
-    // Only affects Chrome
-    outline-color: var(--select-focus);
-  }
-
-  /* 
-   * Experimental - styling of selected options
-   * in the multiselect
-   * Not supported crossbrowser
-   */
-  //   &:not(:disabled) option {
-  //     border-radius: 12px;
-  //     transition: 120ms all ease-in;
-
-  //     &:checked {
-  //       background: linear-gradient(hsl(242, 61%, 76%), hsl(242, 61%, 71%));
-  //       padding-left: 0.5em;
-  //       color: black !important;
-  //     }
-  //   }
-}
-
-.select--disabled {
-  cursor: not-allowed;
-  background-color: #eee;
-  background-image: linear-gradient(to top, #ddd, #eee 33%);
-
-}
-
-label {
-  font-size: 1.125rem;
-  font-weight: 500;
-}
-
-.select + label {
-  margin-top: 0.5rem;
-}
-
-body {
-  min-height: 100vh;
-  display: grid;
-  place-content: center;
-  grid-gap: 0.5rem;
-  font-family: "Baloo 2", sans-serif;
-  background-color: #d9daf3;
-  padding: 1rem;
-  background-image: url('background.jpg');
-  background-position: center;
-}
-
-p {
-	color: #1f215f;
-}
-
-.editOption{
-    width: 90%;
-    height: 24px;
-    position: relative;
-    top: -30px
-
-}
-
-p2 {
-  
-}
-
-input[type=text] {
+  input[type=text], select {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
   box-sizing: border-box;
-  border: 1px solid #555;
-  outline: none;
-  transition: width 0.4s ease-in-out;
-  border-radius: 8px;
 }
 
 input[type=submit] {
@@ -245,57 +26,121 @@ input[type=submit] {
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  display: block;
+    margin: 0 auto;
+
 }
 
-input[type=text]:focus {
-  background-color: lightblue;
-  width: 100%;
+input[type=submit]:hover {
+  background-color: #1f215f;
+  display: block;
+  margin: 0 auto;
+}
+
+div {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
 }
 
 
+.header {
+  padding: 20px;
+  text-align: center;
+  background: #1f215f;
+  color: white;
+  font-size: 12px;
+}
 
+</style>
 
-	</style>
 
 </head>
+ 
 <body>
-
-<div style="background: #E0DEA0; padding: 10px; opacity: 90%;">
+ <!--
+This code will display a form,
+which will save data to the Spreadsheet within Sheet "Sheet1".
+-->
+<div class="header">   
 <center>
-<p style="font-size: x-large;"><b>Form Pemesanan</b></p>
-<form data-spreadsheet-api="https://sheet2api.com/v1/ZYF4v8JeQDyt/pembelian-paket/Sheet1">
-    <input type="text" name="Nama" placeholder="Nama" />
-    <br>
-    <input type="text" name="Code" placeholder="Code (Paste/Tempel)" />
-    <br>
-    <input type="text" name="Nomor HP/WA" placeholder="Nomor Hp/Wa" />
-    <br>
-    <input type="text" name="Tanggal" placeholder="Tanggal" />
-    <br>
-    <input type="submit" value="submit" onClick="buka()"></input>
-</form>
-<p id="mycode" style="color: #E0DEA0;"></p>
+<h1>
+  Pembelian Paket Belajar <p id="bulan"></p>
+</h1>
 </center>
 </div>
+
+<div>
+<form data-spreadsheet-api="https://sheet2api.com/v1/ZYF4v8JeQDyt/pembelian-paket/Sheet1">
+    <input type="text" name="Nama" placeholder="Nama" />
+    <input type="text" name="Code" placeholder="Code" />
+    <input type="text" name="Nomor HP/WA" placeholder="Nomor Hp/Wa" />
+    <input type="text" name="Tanggal" placeholder="Tanggal" />
+    <button type="submit" onClick="alert('Submitted');buka();">Submit</button>
+</form>
 <script src="https://sheet2api.com/v1/template.js"></script>
 <script type="text/javascript">
   function buka(){
     //window.close();
     //window.open("alamatbayar.html");
-
     var textt = document.getElementById("mycode").innerHTML;
     var result = decodeURI(textt);
-
     window.location.href = 'alamatbayar.html' + '#' + result;
 }
-
 </script>
-
 <script>
     var text = window.location.hash.substring(1);
     document.getElementById("mycode").innerHTML = text;
     document.getElementById("myharga").innerHTML = total;
 </script>
+</div>
+<hr>
+<p id="tanggal"></p>
+<hr>
+Silahkan tempelkan (Paste) kode pembelian dan mengisi data dengan lengkap🎆🎉<br>Salam Hangat</br>
+<br></br>
 
+<u>M. Alfa Ridzi, S.Mat</u><br>Founder/CEO</br>
+</div>
+<hr>
+<p style="color: blue;">©primitiflearning.me</p>
+<script>
+var date = new Date();
+
+var date = new Date();var tahun = date.getFullYear();
+var bulan = date.getMonth();
+var tanggal = date.getDate();
+var hari = date.getDay();var jam = date.getHours();
+var menit = date.getMinutes();
+var detik = date.getSeconds();switch(hari) {
+ case 0: hari = "Minggu"; break;
+ case 1: hari = "Senin"; break;
+ case 2: hari = "Selasa"; break;
+ case 3: hari = "Rabu"; break;
+ case 4: hari = "Kamis"; break;
+ case 5: hari = "Jum'at"; break;
+ case 6: hari = "Sabtu"; break;
+}switch(bulan) {
+ case 0: bulan = "Januari"; break;
+ case 1: bulan = "Februari"; break;
+ case 2: bulan = "Maret"; break;
+ case 3: bulan = "April"; break;
+ case 4: bulan = "Mei"; break;
+ case 5: bulan = "Juni"; break;
+ case 6: bulan = "Juli"; break;
+ case 7: bulan = "Agustus"; break;
+ case 8: bulan = "September"; break;
+ case 9: bulan = "Oktober"; break;
+ case 10: bulan = "November"; break;
+ case 11: bulan = "Desember"; break;
+}var tampilTanggal = "" + hari + ", " + tanggal + " " + bulan + " " + tahun + "<br></br>";
+var tampilWaktu = "Pukul: " + jam + ":" + menit + ":" + detik;
+
+
+document.getElementById("tanggal").innerHTML = tampilTanggal+tampilWaktu;
+document.getElementById("bulan").innerHTML = bulan +" "+tahun;
+</script>
+<p id="mycode" style="color: #FFF;"></p>
 </body>
+ 
 </html>
