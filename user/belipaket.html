@@ -187,6 +187,8 @@ which will save data to the Spreadsheet within Sheet "Sheet1".
     <input type="text" name="status" placeholder="Status" />
     <button class="btn" type="submit" onclick="alert('Tunggu hingga muncul alamat pembayaran dan klik tombol whatsapp untuk mengirim bukti pembayaran...');setTimeout(buka, 4000);">Submit</button>
 </form>
+<p id="mycode" style="color: #FFF;"></p>
+
 
 <script src="https://sheet2api.com/v1/template.js"></script>
 <script type="text/javascript">
@@ -201,9 +203,12 @@ which will save data to the Spreadsheet within Sheet "Sheet1".
   function buka(){
     //window.close();
     //window.open("alamatbayar.html");
-    var textt = document.getElementById("mycode").innerHTML;
-    var result = decodeURI(textt);
-    window.location.href = 'alamatbayar.html' + '#' + result;
+    var hargatotal = document.getElementById("mycode").innerHTML;
+    var harga = decodeURI(hargatotal);
+
+
+    //window.location.href = 'belipaket.html' + '#' + result + '#' + harga;
+    window.location.href = 'alamatbayar.html' + '#' + harga;
 }
 </script>
 <script>
@@ -212,6 +217,8 @@ which will save data to the Spreadsheet within Sheet "Sheet1".
     document.getElementById("myharga").innerHTML = total;
 </script>
 </div>
+
+
 <hr>
 <p id="tanggal"></p>
 <hr>
@@ -258,7 +265,5 @@ var tampilWaktu = "Pukul: " + jam + ":" + menit + ":" + detik;
 document.getElementById("tanggal").innerHTML = tampilTanggal+tampilWaktu;
 document.getElementById("bulan").innerHTML = bulan +" "+tahun;
 </script>
-<p id="mycode" style="color: #FFF;"></p>
 </body>
- 
 </html>
