@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Lokasi Tutor Primitif Learning</title>
+
+    <link rel="stylesheet" href="https://openlayers.org/en/v5.3.0/css/ol.css" type="text/css">
+    <!-- The line below is only needed for old environments like Internet Explorer and Android 4.x -->
+     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    
+    <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
+
+  </head>
+  <body>
+    <h2 style="color: #1f215f;">Lokasi Tutor Primitif Learning</h2>
+    
+    <div id="map" class="map"></div>
+    <div id="info" style="display: none;"></div>
+    <label for="track">
+      Lihat Lokasi Ku(centang)
+      <input id="track" type="checkbox"/>
+    </label>  
+  <!--  
+    <p>
+	positionshowingtouser: <code id="positionshowingtouser1"></code>&nbsp;&nbsp;
+      position accuracy : <code id="accuracy"></code>&nbsp;&nbsp;
+      altitude : <code id="altitude"></code>&nbsp;&nbsp;
+      altitude accuracy : <code id="altitudeAccuracy"></code>&nbsp;&nbsp;
+      heading : <code id="heading"></code>&nbsp;&nbsp;
+      speed : <code id="speed"></code>
+    </p>
+-->
+    <p id="basicMap"></p>
+    <script>
+      /*import Feature from 'ol/Feature.js';
+      import Geolocation from 'ol/Geolocation.js';
+      import Map from 'ol/Map.js';
+      import View from 'ol/View.js';
+      import Point from 'ol/geom/Point.js';
+      import {Tile as TileLayer, Vector as VectorLayer} from 'ol/layer.js';
+      import {OSM, Vector as VectorSource} from 'ol/source.js';
+      import {Circle as CircleStyle, Fill, Stroke, Style} from 'ol/style.js';*/
+
+
+
+
+      ol.Map.prototype.addMarker = function(lonlat, style) {
+
+  var feature = new ol.Feature(new ol.geom.Point(ol.proj.fromLonLat(lonlat, this.getView().getProjection())));
+
+  if (style === undefined) {
+    var kml = new ol.format.KML().writeFeatures([feature]);
+    kmlFeature = new ol.format.KML().readFeature(kml);
+    feature.setStyle(kmlFeature.getStyle());
+  } else {
+    feature.setStyle(style);
+  }
+
+  var layer = new ol.layer.Vector({
+    source: new ol.source.Vector({
+      features: [feature]
+    })
+  });
+  this.addLayer(layer);
+  return layer; // e.g. to allow it to be removed
+}
+
+
+
+      var view = new ol.View({
+        center: ol.proj.fromLonLat([111.3, 0.6]),
+          zoom: 4
+      });
+
+      
+
+
+      var map = new ol.Map({
+        layers: [
+          new ol.layer.Tile({
+            source: new ol.source.OSM()
+          })
+        ],
+        target: 'map',
+        view: view
+      });
+
+      var geolocation = new ol.Geolocation({
+        // enableHighAccuracy must be set to true to have the heading value.
+        trackingOptions: {
+          enableHighAccuracy: true
+        },
+        projection: view.getProjection()
+      });
+
+      function el(id) {
+        return document.getElementById(id);
+      }
+
+
+
+      el('track').addEventListener('change', function() {
+        geolocation.setTracking(this.checked);
+      });
+
+      // update the HTML page when the position changes.
+      geolocation.on('change', function() {
+      el('positionshowingtouser1').innerText = geolocation.getPosition();
+        el('accuracy').innerText = geolocation.getAccuracy() + ' [m]';
+        el('altitude').innerText = geolocation.getAltitude() + ' [m]';
+        el('altitudeAccuracy').innerText = geolocation.getAltitudeAccuracy() + ' [m]';
+        el('heading').innerText = geolocation.getHeading() + ' [rad]';
+        el('speed').innerText = geolocation.getSpeed() + ' [m/s]';
+      });
+
+      // handle geolocation error.
+      geolocation.on('error', function(error) {
+        var info = document.getElementById('info');
+        info.innerHTML = error.message;
+        info.style.display = '';
+      });
+
+
+      var accuracyFeature = new ol.Feature();
+      geolocation.on('change:accuracyGeometry', function() {
+        accuracyFeature.setGeometry(geolocation.getAccuracyGeometry());
+      });
+
+
+      var positionFeature = new ol.Feature();
+      positionFeature.setStyle(new ol.style.Style({
+        image: new ol.style.Circle({
+          radius: 12,
+          fill: new ol.style.Fill({
+            color: '#3399CC'
+          }),
+          stroke: new ol.style.Stroke({
+            color: '#fff',
+            width: 2
+          })
+        })
+      }));
+
+      geolocation.on('change:position', function() {
+        var coordinates = geolocation.getPosition();
+        
+
+
+        positionFeature.setGeometry(coordinates ?
+          new ol.geom.Point(coordinates) : null);
+
+
+      });
+
+      new ol.layer.Vector({
+        map: map,
+        source: new ol.source.Vector({
+          features: [accuracyFeature, positionFeature]
+        })
+      });
+
+      //map.addMarker([97.141319, 5.181164]);
+      //map.addMarker([97, 4]);
+
+      //anton
+      map.addMarker([104.5556294863839,-4.1952333428410205]);
+      //Nur Rizayani
+      map.addMarker([95.38853130388333,5.458408157322735]);
+      //Teuku Muhammad Mukhriz, S.T
+      map.addMarker([97.1473821094843,5.181715452438199]);
+      //M. Alfa Ridzi, S.Mat
+      map.addMarker([97.12085964417395,5.1258776451834756]);
+      //Raudhatul Jannah, S.Mat.
+      map.addMarker([96.29778753142891,5.1766625113883755]);
+      //Rais Amsal Turhamun, S.T.
+      map.addMarker([95.391298409965665,591500133691344]);
+      //Cut Mutia Jihan, S. Mat
+      map.addMarker([95.31201392607262,5.539196456987288]);
+
+      //Gelora Fikri Sinaga
+      map.addMarker([99.10611500997378,3.1401613783588447]);
+      //Siti Nurhaliza, S.Mat
+      map.addMarker([95.42062124169713,5.423647007012526]);
+      //Nurul Izzah S.Mat
+      map.addMarker([95.38510106372932,5.563753462818481]);
+      //Qodri Yudit Angesta
+      map.addMarker([97.14469780994693,5.19490749796826]);
+      //DesmitaSri Ulandari, S.Pd
+      map.addMarker([95.33862731946434,5.513200881827023]);
+      //Ridiya Samita Putri, S. Pd
+      map.addMarker([97.17003076689275,3.2627234814141044]);
+      //Dieny Ahda Damanik, S.Mat
+      map.addMarker([99.09094055762735,2.9983481155761904]);
+      //Elda Miranda, S.mat
+      map.addMarker([95.3890737747513,5.575647289734572]);
+    	 
+    </script>
+    <iframe src="https://sheet2api.com/table/Eo5CRxjpRv6o/lokasi-tutor/Sheet1"
+width="100%" height="600" frameBorder="0"
+style="border: 1px solid #dedede;background: transparent;"></iframe>
+  </body>
+</html>
