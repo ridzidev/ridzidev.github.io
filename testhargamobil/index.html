@@ -1,0 +1,968 @@
+<html lang="en"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body{margin: 0 auto;padding:0;font: 16px/20px Cambria, serif; height:auto;width:100%; max-width:1200px;border:0}
+h1 {font: bold 20px/24px Cambria, serif;float: left;margin:5px 15px;}
+h1.medium {font: bold 16px/20px Cambria, serif;float: left;margin:5px 15px;}
+.top {width:100%; font: bold 18px/22px Cambria, serif;color: #FE802C;margin: 7px 4px;}
+h2 {
+    font: bold 16px/24px Cambria, serif;
+    text-align: left;
+    padding: 5px;
+    color: #FE802C;
+    margin: -5px 0 0 -0.5%;
+
+    width: 102.7%;
+}
+
+h3 {
+    font: bold 14px/18px Cambria, serif;
+    text-align: left;
+    padding: 0;
+    color: #FE802C;
+    margin: -5px 0 -10px 0;
+
+    width: 102.7%;
+}
+
+h2.top{background:#fff;padding:0 0 10px;margin:0 }
+
+strong.b{float:left; font: bold 16px/20px Cambria, serif;text-align:left;padding: 5px 0 5px ;color:#FE802C;margin:0; width:100%}
+
+a{text-decoration:none;color:#3F3F3F;font-size:16px;font-weight:500}
+a:hover{color:red;font-size:16px;font-weight:600}
+.wrapper {width:100%;max-width:1200px;height:auto;margin:0 auto;}
+.fix-menu {position:fixed;width:100%;max-width:1200px;top:0;height:90px;padding:0;z-index:999;background-color:#c40553}
+#top-logo-cover{float: left;width:100%;padding:5px 0;max-width:1200px;border-bottom:1px solid red; background-color:#005592}
+*{box-sizing: border-box;}
+.logo-box{float:left;width:auto;height:auto;padding:6px 7px;border:1px solid #fff;margin:6px 0 0 1%;text-align:center;font-size:30px;color:#fff;font-weight:700;border-radius:5px;-moz-box-shadow: 0px 0px 2px 1px #ccc;-webkit-box-shadow: 0px 0px 2px 1px #ccc;box-shadow: 0px 0px 2px 1px #ccc;}
+
+#ads{float:left; width:100%; height:auto; margin:10px 0 15px;padding:0}
+#ads.side{margin:10 0 0;background-color:#f0f0f0;}
+#ads.index-side{float:right;margin:10 0 0;background-color:#f0f0f0;width:19%}
+#ads.top{margin:10 0 0;background-color:#f0f0f0;}
+
+.search-cover {float: left;width: 300px;height: 40px;margin: 3px 1% 0;padding: 2px;}
+
+#searchname{width:100%;height:100%;padding:0 10px; margin:0;border-radius:3px}
+.resultserach{position:absolute;background:#ccc;width:295px;z-index:10}
+
+#page{float:left; width:auto; height:auto;padding:0 10px 10px 0}
+#page.main{width:70%;}
+#page.index-main{width:80%;}
+
+#page.main-footer{width:70%;}
+
+#page.bot-dec {width:70%;font-size: 12px;text-align: center;margin-top: -20px;padding: 0 20px 0 0;}
+
+#page.side{float:right; width:100%;padding:0;background: #f6f6f6;}
+#page.footer{width:100%;text-align: center;padding: 20px 20px 10px;font-size: 12px;}
+#page.copyright{width:100%;text-align: center;padding: 5px;font-size: 12px;background: #f6f6f6;}
+
+.vertical-menu {width: 30%;float:right; background-color: #eee;}
+.vertical-menu a {float:left; width:100%;color: black;display: inline;padding: 5px 10px;text-decoration: none;border-bottom:1px solid #fff;border-right:1px solid #fff}
+.vertical-menu a:hover {background-color: red;color:#fff;font-weight:500}
+.vertical-menu a.active {background-color: #4CAF50;color: white;}
+#sub-brand-link{float: left;font-size:14px; width: 49.8%;margin: 1px 0.1%;padding:5px 15px;font-weight: 500;}
+
+.mobile-toggle{float:left;width:auto; height:auto}
+
+.heading{font: bold 16px/20px Cambria, serif;color: #fff;background-color:#142B72; padding: 5px 10px;margin:0; width: 100%;float: left;text-align:left}
+
+.heading-toggle{font: bold 16px/20px Cambria, serif;color: #fff;background-color:#ccc; padding: 5px 10px;margin:5px 0 0; width: 100%;float: left;text-align:left;display:none}
+
+#viewmore {
+    float: left;
+    width: auto;
+    padding: 6px 7px;
+    color: #fff;
+    font-weight: 500;
+    text-align: right;
+    border: 1px solid #f5f5f5;
+    margin: 8px 0 5px;
+    font-size:14px;
+}
+
+#viewmore:hover {color:red;background:#fff}
+
+
+.sub-heading{font: bold 16px/20px Cambria, serif;color:#142B72; padding: 5px 10px;margin:0; width: 100%;float: left;}
+
+b{color:green}
+
+strong{color:#555}
+
+.sub-hd{font: bold 16px/20px Cambria, serif;color: #fff;background-color:#142B72; padding: 5px 10px;margin:0; width: 100%;float: left;text-align:left}
+
+#breadcrumb{float:left;margin:0 ;height:auto;width:100%;padding:0 0 10px 1%;font-size:12px}
+
+#breadcrumb a{font-weight:300;font-size:12px;}
+
+#thumb{height: auto;width:auto;max-width: 95%;margin-bottom:5px}
+
+#thumb.noprice{max-height:250px;}
+
+strong.product-link{font-weight:500;color:gray;line-height:20px}
+
+/*show hide*/
+
+.show {height:95px;float:left; overflow:hidden;}
+
+#btnControl {
+display:none;
+}
+
+#btnControl:checked + label > .show {
+    width: 100%;
+    height: auto;
+}
+
+#btnControl:checked + label > .hide {
+    display:none;
+}
+
+.hide {background:#fff;color:red;width:100%;height:auto;float:left;margin:0;padding:10px;text-align:center;font-weight:700}
+
+.close {color:red;width:100%;height:auto;float:left;text-align:center;margin:0;font-weight:700}
+
+
+/*shoehide pro-des*/
+
+
+.show5 {height:62px;float:left; overflow:hidden;}
+
+#btnControl5 {
+display:none;
+}
+
+#btnControl5:checked + label > .show5 {
+    width: 100%;
+    height: auto;
+}
+
+#btnControl5:checked + label > .hide5 {
+    display:none;
+}
+
+.hide5 {background:#fff;color:red;width:100%;height:auto;float:left;margin:0;padding:10px 0 0;text-align:center;font-weight:700}
+
+.close5 {color:red;width:100%;height:auto;float:left;text-align:center;margin:0;font-weight:700}
+
+
+
+
+/*mobile menu1*/
+
+.show1 {width: auto;height:auto;float:left;overflow:hidden;}
+
+#btnControl1 {
+display:none;
+}
+
+#btnControl1:checked + label > .show1 {
+    width: auto;
+    height: auto;
+}
+
+#btnControl1:checked + label > .hide1 {
+    display:none;
+}
+
+.hide1 {display:none; background:#fff;color:red;width:100%;height:auto;float:left;margin:0;padding;px;text-align:center;}
+
+.close1 {display: none;color:red;width:100%;height:auto;float:left;text-align:center;margin:0;}
+
+
+/*end mobile menu1*/
+
+
+/*country*/
+
+.showc {width: auto;height:auto;float:left;overflow:hidden;}
+
+#btnControlc {
+display:none;
+}
+
+#btnControlc:checked + label > .showc {
+    width: auto;
+    height: auto;
+}
+
+#btnControlc:checked + label > .hidec {
+    display:none;
+}
+
+.hidec {display:none; background:#fff;color:red;width:100%;height:auto;float:left;margin:0;padding;px;text-align:center;}
+
+.closec {display: none;color:red;width:100%;height:auto;float:left;text-align:center;margin:0;}
+
+
+/*end mobile menu1*/
+
+
+
+
+/*mobile menu2*/
+
+.show2 {width: auto;height:auto;float:left;overflow:hidden;}
+
+#btnControl2 {
+display:none;
+}
+
+#btnControl2:checked + label > .show2 {
+    width: auto;
+    height: auto;
+}
+
+#btnControl2:checked + label > .hide2 {
+    display:none;
+}
+
+.hide2 {display:none; background:#fff;color:red;width:100%;height:auto;float:left;margin:0;padding;5px;text-align:center;}
+
+.close2 {display: none;color:red;width:100%;height:auto;float:left;text-align:center;margin:0;}
+
+
+/*end mobile menu1*/
+
+
+
+/*mobile menu3*/
+
+.show3 {width: auto;height:auto;float:left;overflow:hidden;}
+
+#btnControl3 {
+display:none;
+}
+
+#btnControl3:checked + label > .show3 {
+    width: auto;
+    height: auto;
+}
+
+#btnControl1:checked + label > .hide3 {
+    display:none;
+}
+
+.hide3 {display:none; background:#fff;color:red;width:100%;height:auto;float:left;margin:0;padding;5px;text-align:center;}
+
+.close3 {display: none;color:red;width:100%;height:auto;float:left;text-align:center;margin:0;}
+
+
+/*end mobile menu1*/
+
+
+
+span1{font-size:14px;width:100%;float:left;padding:10px 0;color:#555555}
+
+
+#pbox{float:left; position:relative; width:25%; text-align:center;height:160px;box-sizing: border-box;padding: 5px 10px 10px;}
+#pbox.cover:hover{-moz-box-shadow: 0px 0px 2px 1px #ccc; -webkit-box-shadow: 0px 0px 2px 1px #ccc;box-shadow: 0px 0px 2px 1px #ccc;}
+#pbox.latest:hover{border:1px solid red;border-radius: 10px;}
+#pbox.full{width:100%;}
+#pbox.bottom-price-link{width:100%;height:auto;text-align:left;}
+#pbox.listing {
+    width: 50%;
+    height: auto;
+    border:1px solid #f3f3f3;
+}
+#pbox.listing:hover{border:1px solid red;border-radius: 10px;-moz-box-shadow: 0px 0px 2px 1px #ccc; -webkit-box-shadow: 0px 0px 2px 1px #ccc;box-shadow: 0px 0px 2px 1px #ccc;}
+
+#pbox.cover {
+    height: 250px;
+    width: 50%;
+    border: 1px solid #f3f3f3;
+
+}
+#pbox.image-detail{width:100%;height:auto;}
+
+#pbox.detail-price{width:100%;height:auto;font: bold 20px/20px Cambria,;color:#142B72;text-align: left;}
+
+#pbox.latest-model{float:left;height:auto;width:60%;border-bottom:1px solid #ccc;text-align:left;padding: 5px 10px;}
+#pbox.more-model{height:auto;width:60%;text-align:left;padding: 5px 10px;}
+#pbox.latest-model-price{float:right; height:auto;width:40%;border-bottom:1px solid #ccc;text-align:left;padding: 5px 10px;line-height: 20.4px;}
+#pbox.more-model-price{float:right; height:auto;width:40%;text-align:left;padding: 5px 10px;}
+#pbox.more-price{float:left; height:auto;width:60%;text-align:left;padding: 5px 10px;}
+.cover{float:left; width:100%; height:auto;text-align: left;}
+
+#pbox.upcoming-model{height:auto;width:33.334%;border-bottom:1px solid #fff;border-right:1px solid #fff;text-align:left;padding: 5px 10px;}
+
+#pbox.price-cover {width: 100%;height: auto;border: 0px solid #f5f5f5;margin: 5px 1% 10px 0;border-radius: 5px;-moz-box-shadow: 0px 0px 2px 1px #ccc; -webkit-box-shadow: 0px 0px 2px 1px #ccc;box-shadow: 0px 0px 2px 1px #ccc;}
+
+#pbox.detail-cover {width: 99%;height: auto; margin: 5px 1% 10px 0;-moz-box-shadow: 0px 0px 2px 1px #ccc; -webkit-box-shadow: 0px 0px 2px 1px #ccc;box-shadow: 0px 0px 2px 1px #ccc;text-align:left;}
+
+#clearfilter {
+    float: left;
+    width: 49%;
+    height: auto;
+    padding: 5px 1% 6px 0;
+    background: #142B72;
+    color: #fff;
+    cursor: pointer;
+    margin: 15px 0 0 0;
+    border: 2px solid #ccc;
+}
+
+.cn{width:49%;height:31px;margin: 16px 1% 7px 0;float:left}
+
+.show-products{width: 49%;padding: 6px 1% 7px;float: right;margin:15px 0 5px;background: #142B72;color: #fff;}
+
+#pc {float:left;width:auto;height:auto;padding:10px;background:#f5f5f5;color:#142B72;display:none}
+
+span.hida{float:left;width:100%;height:auto;padding:1px;background:#f5f5f5;color:#142B72;text-align:center}
+
+#compareproducts {
+    float: left;
+    padding: 5px 20px;
+    background: #f5f5f5;
+    width: auto;
+    border-radius: 3px;
+    color: red;
+    font-weight: 700;
+    cursor: pointer;
+    width:100%
+}
+
+.dropdown2 {
+    float: left;
+    width: 33%;
+}
+
+span.cb{float:right;font-weight: 700; color:red;background:#f5f5f5; border-radius:3px;padding:3px 10px 7px;border: 2px solid #ccc;}
+
+.more-price-list-page{float: right;padding: 10px;width: 100%;text-align: right;color: red;font: bold 16px/24px Cambria, serif;}
+
+.price{float:left;text-align: center;width: 100%;color: #142B72;margin:50px 0 0 0}
+
+.cat-tab{float:left;height: auto;width:auto;padding:7px 10px;margin:0;text-align:center;font-size:16px}
+
+#images{float:left;width:100%;height:auto; margin:0;padding:0;border-radius:0;margin-bottom:5px}
+#images.mobile-img-detail{width:auto; max-width:98%;max-height:500px;margin:15px auto 10px; float:none}
+
+#productstabs{float:left;padding:0;width:100%;height:auto;margin:0;background:#f5f5f5;border-bottom:1px solid #ccc;}
+.tabsclass{position: fixed;top:800px;right:-10px; padding:7px;font-size:16px;color:#ff0080;font-weight:700;}
+.detail-link{float:left;width:auto;height:auto;margin:3px;padding:5px 1%;text-align:left;color:#0088bb;font-size:16px;font-weight:700}
+
+.trhd{width:100%;height:auto;margin:5px 0;padding:5px 1%;font-weight:700;float:left;border-bottom:1px solid #ccc;color:#1d1d1d;margin:3px 0;background:#f5f5f5;text-transform:capitalize}
+.tr{width:100%;height:auto;float:left;border-top:1px solid #ccc;margin:-3px 0 0 0;padding:0 1%;}
+.td{width:25%;height:auto;margin:0;padding:2px 0 4px;float:left;color:#0088bb;font-weight:700;margin:3px 0;text-transform: capitalize}
+.td2{width:73%;height:auto;margin:0;padding:2px 0 4px;float:right;margin:3px 0}
+
+span.menu {display:none;float:right;font-size:26px;color:#fff; width:auto;height:auto;padding:5px;margin:-1px -5px 0 0;border:3px solid #ccc}
+
+.social-widget{width:99%;float: left; margin: 10px 0 0 0.5%;}
+
+ul.beardcrumb{float:left;list-style:none;margin:0 0 0 -20px}
+li.beardcrumb{float:left;padding:0 15px 0 0;}
+
+li.com-select{float:left;width:100%}
+
+span.bottom-link{float:left;padding:5px 10px ;margin:0 0 10px; background-color:#ccc;border:1px solid #fff;width:25%}
+
+@media (max-width:800px){
+
+
+#page.main{width:60%;}
+
+#page.index-main{width:100%;padding:0 10px}
+
+#page.main-footer{width:100%;padding:0 10px}
+
+#page.bot-dec {width:100%;margin-top:10px;padding:0 10px}
+
+#ads.index-side{width:100%;padding:0 10px}
+
+.vertical-menu {width: 40%;}
+
+#pbox{width:50%;}
+
+
+}
+
+@media (max-width:600px){
+
+#pbox.cover{width:96%; margin:0 2%;}
+
+
+.top {font: bold 14px/18px Cambria, serif;}
+
+.show {height:90px;float:left; overflow:hidden;}
+
+#btnControl {
+display:none;
+}
+
+#btnControl:checked + label > .show {
+    width: 100%;
+    height: auto;
+}
+
+#btnControl:checked + label > .hide {
+    display:none;
+}
+
+.hide {background:#fff;color:red;width:100%;height:auto;float:left;margin:0;padding;10px;text-align:center;}
+
+.close {color:red;width:100%;height:auto;float:left;text-align:center;margin:0;}
+
+
+
+
+
+
+/*mobile menu1*/
+
+.show1 {width: auto;height:30px;float:left;overflow:hidden;}
+
+#btnControl1 {
+display:none;
+}
+
+#btnControl1:checked + label > .show1 {
+    width: auto;
+    height: auto;
+}
+
+#btnControl1:checked + label > .hide1 {
+    display:none;
+}
+
+.hide1 {display:block;background:#fff;color:red;width:100%;height:auto;float:left;margin:-30px 0 10px;padding:10px;text-align:center;}
+
+.close1 {display:block; color:red;width:100%;height:auto;float:left;text-align:center;margin:0;padding:30px;}
+
+
+/*end mobile menu*/
+
+
+/*mobile menu2*/
+
+.show2 {width: auto;height:30px;float:left;overflow:hidden;}
+
+#btnControl2 {
+display:none;
+}
+
+#btnControl2:checked + label > .show2 {
+    width: auto;
+    height: auto;
+}
+
+#btnControl2:checked + label > .hide2 {
+    display:none;
+}
+
+.hide2 {display:block;background:#fff;color:red;width:100%;height:auto;float:left;margin:-30px 0 10px;padding:10px;text-align:center;}
+
+.close2 {display:block; color:red;width:100%;height:auto;float:left;text-align:center;margin:0;padding:10px;}
+
+
+/*end mobile menu*/
+
+
+/*mobile menu3*/
+
+.show3 {width: auto;height:30px;float:left;overflow:hidden;}
+
+#btnControl3 {
+display:none;
+}
+
+#btnControl3:checked + label > .show3 {
+    width: auto;
+    height: auto;
+}
+
+#btnControl3:checked + label > .hide3 {
+    display:none;
+}
+
+.hide3 {display:block;background:#fff;color:red;width:100%;height:auto;float:left;margin:-30px 0 10px;padding:10px;text-align:center;}
+
+.close3 {display:block; color:red;width:100%;height:auto;float:left;text-align:center;margin:0;padding:10px;}
+
+
+/*end mobile menu*/
+
+h2 {font: bold 14px/20px Cambria, serif;}
+
+li.com-select{float:left;width:100%}
+
+span.bottom-link{width:50%}
+
+h1.medium {font: bold 14px/18px Cambria, serif;float: left;margin:5px 15px;}
+
+h1 {font: bold 14px/18px Cambria, serif;margin: 5px;}
+
+#sub-brand-link{float: left;width: 99.8%;padding:10px;}
+
+.heading-toggle{display:block;}
+
+#page.main{width:100%;padding:0 10px}
+
+.vertical-menu {width: 100%;padding:0 10px}
+
+#pbox.upcoming-model{width:50%;}
+
+#pbox.image-detail{width:100%;height:auto;}
+
+.search-cover{float:right;width:76%;height:31px;padding:0; margin:4px 2%}
+.resultserach{width:196px;}
+
+.mobile-toggle{position:fixed; float:left;width:300px; top:5px; height:40px;left:-250px; overflow:hidden;background:#fff;z-index:999}
+
+.mobile-toggle:hover{width:300px; height:100%;left:0; overflow:scroll;background:#f5f5f5; border:1px solid red}
+
+.logo-box{margin-left:2%;padding:3px 2%;font-size:20px; border-radius:0;background:#f5f5f5;color:#142B72}
+
+.heading{font: bold 14px/18px Cambria, serif;color: red;padding: 10px;margin:0; width: 100%;background:#fff;float: left;text-align:center}
+
+span.menu {display:block;}
+
+
+
+/*country*/
+
+.showc {height:200px;}
+
+#btnControlc {
+display:none;
+}
+
+#btnControlc:checked + label > .showc {
+    width: auto;
+    height: auto;
+}
+
+#btnControlc:checked + label > .hidec {
+    display:none;
+}
+
+.hidec {display:block; background:#fff;color:red;width:100%;height:auto;float:left;margin:0;padding;px;text-align:center;}
+
+.closec {display: block;color:red;width:100%;height:auto;float:left;text-align:center;margin:0;}
+
+.dropdown dd ul {
+    
+    width: 96%;
+    max-height: 300px;
+    padding: 10px 5px;
+    float: left;
+    margin:0 2%;
+    text-align:left;
+}
+
+
+#viewmore {
+
+    width: 46%;
+    margin:10px  2% 0px;
+    background:#fff;
+    color:red;
+    padding:5px 5px 4px;
+    text-align:center;
+}
+
+
+
+
+}
+
+
+
+</style>
+
+
+<title>Car Prices In Indonesia With Full Specs | New Cars 2022, 2023 - Ccarprice  IDN</title>
+<meta name="description" content="Get latest Car Prices in Indonesia, Full Features and Specs, Best Cars Rate list in Indonesia, 2022 New Car Models, and Upcoming 2023 Cars">
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta property="og:title" content="Car Prices In Indonesia With Full Specs | New Cars 2022, 2023 - Ccarprice  IDN">
+<meta property="og:description" content="Get latest Car Prices in Indonesia, Full Features and Specs, Best Cars Rate list in Indonesia, 2022 New Car Models, and Upcoming 2023 Cars">
+<meta property="og:site_name" content="CcarPrice">
+<meta property="og:type" content="website">
+<meta property="og:country-name" content="id">
+<meta property="og:url" content="https://www.ccarprice.com/id/">
+<link rel="apple-touch-icon" sizes="57x57" href="images/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="images/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="images/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="images/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="images/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="images/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="images/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="images/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="images/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192" href="images/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="images/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+<meta name="theme-color" content="yellow">
+
+<link rel="canonical" href="https://www.ccarprice.com/id/">
+
+<script type="401819028090d05e795ef945-text/javascript">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5KK2QK9');</script>
+
+<script src="js/79d17d8eeda7b489e9a08fdf66ba1431.js" type="401819028090d05e795ef945-text/javascript"></script>
+</head>
+<body>
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5KK2QK9" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<header>
+<div itemscope itemtype="http://schema.org/Organization">
+<meta itemprop="name" content="C Car Price">
+<meta itemprop="url" content="https://www.ccarprice.com/">
+
+</div>
+<div itemscope itemtype="http://schema.org/WebSite">
+<meta itemprop="name" content="ccarprice">
+<meta itemprop="url" content="https://www.ccarprice.com/">
+</div>
+<div class="wrapper">
+
+</div>
+
+
+<header>
+      <h1 style="padding: 60px;
+    text-align: center;
+    background: #142B72;
+    color: #FE802C;
+    font-size: 30px;">Car Price Example</h1>
+    </header>
+    
+    <br><p style="text-align: center;">Ridzi (For Development Only)</p></br>
+
+</div></div></header>
+<div class="social-widget">
+<div class="pw-server-widget" data-id="wid-fn680s7m"></div></div>
+
+
+
+
+<div id="page" class="main">
+<h1 class="top">Latest Car Models in Indonesia With Prices and Specs </h1>
+
+<div id="pbox" class="price-cover">
+<h2 class="left">Latest Car Prices in Indonesia 2022</h2>
+<div id="pbox" class="cover">
+<div id="pbox" class="full">
+<img src="images/Genesis_GV80_3.5T_2024.jpg" id="thumb" class="noprice" alt="Genesis GV80 3.5T 2024" title="Genesis GV80 3.5T 2024"><br>
+<strong class="product-link">Genesis GV80 3.5T 2024</strong></a></div>
+<div class="price">
+</div>
+</div>
+<div id="pbox" class="cover">
+<div id="pbox" class="full">
+<img src="images/Genesis_GV80_2.5T_2024.jpg" id="thumb" class="noprice" alt="Genesis GV80 2.5T 2024" title="Genesis GV80 2.5T 2024"><br>
+<strong class="product-link">Genesis GV80 2.5T 2024</strong></a></div>
+<div class="price">
+</div>
+</div>
+<div id="pbox" class="cover">
+<div id="pbox" class="full">
+<img src="images/Fiat_500X_Yacht_Club_Capri_2024.jpg" id="thumb" class="noprice" alt="Fiat 500X Yacht Club Capri 2024" title="Fiat 500X Yacht Club Capri 2024"><br>
+<strong class="product-link">Fiat 500X Yacht Club Capri 2024</strong></a></div>
+<div class="price">
+ </div>
+</div>
+ <div id="pbox" class="cover">
+<div id="pbox" class="full">
+<img src="images/Alfa_Romeo_Stelvio_Quadrifoglio_2024.jpg" id="thumb" class="noprice" alt="Alfa Romeo Stelvio Quadrifoglio 2024" title="Alfa Romeo Stelvio Quadrifoglio 2024"><br>
+<strong class="product-link">Alfa Romeo Stelvio Quadrifoglio 2024</strong></a></div>
+<div class="price">
+</div>
+</div>
+<div id="pbox" class="cover">
+<div id="pbox" class="full">
+<img src="images/Alfa_Romeo_Stelvio_Ti_2024.jpg" id="thumb" class="noprice" alt="Alfa Romeo Stelvio Ti 2024" title="Alfa Romeo Stelvio Ti 2024"><br>
+<strong class="product-link">Alfa Romeo Stelvio Ti 2024</strong></a></div>
+<div class="price">
+</div>
+</div>
+<div id="pbox" class="cover">
+<div id="pbox" class="full">
+<img src="images/Alfa_Romeo_Stelvio_2024.jpg" id="thumb" class="noprice" alt="Alfa Romeo Stelvio 2024" title="Alfa Romeo Stelvio 2024"><br>
+<strong class="product-link">Alfa Romeo Stelvio 2024</strong></a></div>
+<div class="price">
+</div>
+</div>
+<div id="pbox" class="cover">
+<div id="pbox" class="full">
+<img src="images/Volvo_S60_Inscription_2024.jpg" id="thumb" class="noprice" alt="Volvo S60 Inscription 2024" title="Volvo S60 Inscription 2024"><br>
+<strong class="product-link">Volvo S60 Inscription 2024</strong></a></div>
+<div class="price">
+</div>
+</div>
+<div id="pbox" class="cover">
+<div id="pbox" class="full">
+<img src="images/Chevrolet_Camaro_1LS_2024.gif" id="thumb" class="noprice" alt="Chevrolet Camaro 1LS 2024" title="Chevrolet Camaro 1LS 2024"><br>
+<strong class="product-link">Chevrolet Camaro 1LS 2024</strong></a></div>
+<div class="price">
+</div>
+</div>
+</div>
+<div id="ads" class="top">
+<script async src="js/adsbygoogle.js" type="401819028090d05e795ef945-text/javascript"></script>
+
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6152120620428066" data-ad-slot="7316378837" data-ad-format="auto"></ins>
+<script type="401819028090d05e795ef945-text/javascript">
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+
+<div id="pbox" class="price-cover">
+<div class="more-price-link"><h2> Car Prices in Indonesia IDN 750000000 to IDN 1000000000 </h2></div>
+<div id="pbox" class="cover">
+<div id="pbox" class="full">
+<img src="images/Alfa-Romeo-4C-Spider-2020_2.jpg" id="thumb" class="noprice" alt="Alfa Romeo 4C Spider 2020" title="Alfa Romeo 4C Spider 2020"><br>
+<strong class="product-link">Alfa Romeo 4C Spider 2020</strong></a> </div>
+<div class="price">
+IDN 999,997,800 </div></div>
+<div id="pbox" class="cover">
+<div id="pbox" class="full">
+<img src="images/Cadillac-CTS-3.6L-Premium-AWD-2019.png" id="thumb" class="noprice" alt="Cadillac CTS 3.6L Premium AWD 2019" title="Cadillac CTS 3.6L Premium AWD 2019"><br>
+<strong class="product-link">Cadillac CTS 3.6L Premium AWD 2019</strong></a> </div>
+<div class="price">
+IDN 999,253,200 </div></div>
+<div id="pbox" class="cover">
+<div id="pbox" class="full">
+<img src="images/Ford-Mustang-Shelby-GT350R-2019.png" id="thumb" class="noprice" alt="Ford Mustang Shelby GT350R 2019" title="Ford Mustang Shelby GT350R 2019"><br>
+<strong class="product-link">Ford Mustang Shelby GT350R 2019</strong></a> </div>
+<div class="price">
+IDN 999,253,200 </div></div>
+<div id="pbox" class="cover">
+<div id="pbox" class="full">
+<img src="images/LandRover_RangeRover_Velar_P340_R-Dynamic_S_2022.jpg" id="thumb" class="noprice" alt="Land Rover Range Rover Velar P340 R-Dynamic S 2022" title="Land Rover Range Rover Velar P340 R-Dynamic S 2022"><br>
+<strong class="product-link">Land Rover Velar P340 R Dynamic S 2022</strong></a> </div>
+<div class="price">
+IDN 997,764,000 </div></div>
+div>
+
+<div id="pbox" class="price-cover">
+<div class="more-price-link"><h2> Car Prices in Indonesia IDN 500000000 to IDN 750000000 </h2></div>
+<div id="pbox" class="cover">
+<div id="pbox" class="full">\
+<img src="images/Lexus-RX-350-F-SPORT-Performance-2020.jpg" id="thumb" class="noprice" alt="Lexus RX 350 F SPORT Performance 2020" title="Lexus RX 350 F SPORT Performance 2020"><br>
+<strong class="product-link">Lexus RX 350 F SPORT Performance 2020</strong></a> </div>
+<div class="price">
+IDN 749,812,200 </div></div>
+<div id="pbox" class="cover">
+<div id="pbox" class="full">
+<img src="images/Lincoln_Corsair_Grand_Touring_Plug-In_Hybrid_2022.jpg" id="thumb" class="noprice" alt="Lincoln Corsair Grand Touring Plug-In Hybrid 2022" title="Lincoln Corsair Grand Touring Plug-In Hybrid 2022"><br>
+<strong class="product-link">Lincoln Corsair Grand Touring Plug In Hybrid 2022</strong></a> </div>
+<div class="price">
+IDN 749,514,360 </div></div>
+<div id="pbox" class="cover">
+<div id="pbox" class="full">
+<img src="images/Infiniti-Q50-RED-SPORT-400-2020.jpg" id="thumb" class="noprice" alt="Infiniti Q50 RED SPORT 400 2020" title="Infiniti Q50 RED SPORT 400 2020"><br>
+<strong class="product-link">Infiniti Q50 RED SPORT 400 2020</strong></a> </div>
+<div class="price">
+IDN 749,365,440 </div></div>
+
+<div id="pbox" class="cover">
+<div id="pbox" class="full">
+<img src="images/Audi_Q5_Sportback_S_line_Prestige_45_TFSI_quattro_2023.jpg" id="thumb" class="noprice" alt="Audi Q5 Sportback S line Prestige 45 TFSI quattro 2023" title="Audi Q5 Sportback S line Prestige 45 TFSI quattro 2023"><br>
+<strong class="product-link">Audi Q5 Sportback S line Prestige 45 TFSI quattro 2023</strong></a> </div>
+<div class="price">
+IDN 749,067,600 </div></div>
+</div>
+
+<div id="pbox" class="price-cover">
+<div class="more-price-link"><h2> Car Prices in Indonesia IDN 400000000 to IDN 500000000 </h2></div>
+<div id="pbox" class="cover">
+<div id="pbox" class="full">
+<img src="images/Jeep_Wrangler_Unlimited_Sport_4x4_2022.jpg" id="thumb" class="noprice" alt="Jeep Wrangler Unlimited Sport 2022" title="Jeep Wrangler Unlimited Sport 2022"><br>
+<strong class="product-link">Jeep Wrangler Unlimited Sport 2022</strong></a> </div>
+<div class="price">
+IDN 499,924,440 </div></div>
+<div id="pbox" class="cover">
+<div id="pbox" class="full">
+<img src="images/Jeep_Gladiator_Willys_2021.jpg" id="thumb" class="noprice" alt="Jeep Gladiator Willys 2021" title="Jeep Gladiator Willys 2021"><br>
+<strong class="product-link">Jeep Gladiator Willys 2021</strong></a> </div>
+<div class="price">
+IDN 499,775,520 </div></div>
+<div id="pbox" class="cover">
+<div id="pbox" class="full">
+<img src="images/Jeep_Gladiator_Texas_Trail_2021.jpg" id="thumb" class="noprice" alt="Jeep Gladiator Texas Trail 2021" title="Jeep Gladiator Texas Trail 2021"><br>
+<strong class="product-link">Jeep Gladiator Texas Trail 2021</strong></a> </div>
+<div class="price">
+IDN 499,775,520 </div></div>
+<div id="pbox" class="cover">
+<div id="pbox" class="full">
+<img src="images/Jeep_Gladiator_Mojave_2021.jpg" id="thumb" class="noprice" alt="Jeep Gladiator Mojave 2021" title="Jeep Gladiator Mojave 2021"><br>
+<strong class="product-link">Jeep Gladiator Mojave 2021</strong></a> </div>
+<div class="price">
+IDN 499,775,520 </div></div>
+
+<div id="pbox" class="price-cover">
+<div class="more-price-link"><h2> Car Prices in Indonesia IDN 300000000 to IDN 400000000 </h2></div>
+<div id="pbox" class="cover">
+<div id="pbox" class="full">
+<img src="images/Ford_Maverick_Lariat_Hybrid_2023.jpg" id="thumb" class="noprice" alt="Ford Maverick Lariat Hybrid 2023" title="Ford Maverick Lariat Hybrid 2023"><br>
+<strong class="product-link">Ford Maverick Lariat Hybrid 2023</strong></a> </div>
+<div class="price">
+IDN 399,999,120 </div></div>
+<div id="pbox" class="cover">
+<div id="pbox" class="full">
+<img src="images/Ford_Maverick_Lariat_2023.jpg" id="thumb" class="noprice" alt="Ford Maverick Lariat 2023" title="Ford Maverick Lariat 2023"><br>
+<strong class="product-link">Ford Maverick Lariat 2023</strong></a> </div>
+<div class="price">
+IDN 399,999,120 </div></div>
+<div id="pbox" class="cover">
+<div id="pbox" class="full">
+<img src="images/Tata_Harrier_XZ_Plus_Dark_Edition_2022.jpg" id="thumb" class="noprice" alt="Tata Harrier XZ Plus Dark Edition 2022" title="Tata Harrier XZ Plus Dark Edition 2022"><br>
+<strong class="product-link">Tata Harrier XZ Plus Dark Edition 2022</strong></a> </div>
+<div class="price">
+IDN 399,850,200 </div></div>
+<div id="pbox" class="cover">
+<div id="pbox" class="full">
+<img src="images/Hyundai_Tucson_SE_AWD_2022.jpg" id="thumb" class="noprice" alt="Hyundai Tucson SE AWD 2022" title="Hyundai Tucson SE AWD 2022"><br>
+<strong class="product-link">Hyundai Tucson SE AWD 2022</strong></a> </div>
+<div class="price">
+IDN 399,850,200 </div></div>
+
+<div id="pbox" class="price-cover">
+<div class="more-price-link"><h2> Car Prices in Indonesia IDN 150000000 to IDN 300000000 </h2></div>
+<div id="pbox" class="cover">
+<div id="pbox" class="full">
+<img src="images/Hyundai-i20-2021_1.jpg" id="thumb" class="noprice" alt="Hyundai i20 2021" title="Hyundai i20 2021"><br>
+<strong class="product-link">Hyundai i20 2021</strong></a> </div>
+<div class="price">
+IDN 299,775,960 </div></div>
+<div id="pbox" class="cover">
+<div id="pbox" class="full">
+<strong class="product-link">Nissan Qashqai S 2020</strong></a> </div>
+<div class="price">
+IDN 299,329,200 </div></div>
+<div id="pbox" class="cover">
+<div id="pbox" class="full">
+<img src="images/SX4_GL.jpg" id="thumb" class="noprice" alt="Suzuki SX4 GL Plus" title="Suzuki SX4 GL Plus"><br>
+<strong class="product-link">Suzuki SX4 GL Plus</strong></a> </div>
+<div class="price">
+IDN 299,329,200 </div></div>
+<div id="pbox" class="cover">
+<div id="pbox" class="full">
+<img src="images/Subaru_Impreza_Sedan_CVT_2022.jpg" id="thumb" class="noprice" alt="Subaru Impreza CVT Sedan 2022" title="Subaru Impreza CVT Sedan 2022"><br>
+<strong class="product-link">Subaru Impreza CVT Sedan 2022</strong></a> </div>
+<div class="price">
+IDN 299,180,280 </div></div>
+
+<div id="pbox" class="price-cover">
+<div class="more-price-link"><h2> Car Prices in Indonesia Under IDN 150000000 </h2></div>
+
+<div id="pbox" class="cover">
+<div id="pbox" class="full">
+<img src="images/Suzuki_Brezza_2022.jpg" id="thumb" class="noprice" alt="Suzuki Brezza 2022" title="Suzuki Brezza 2022"><br>
+<strong class="product-link">Suzuki Brezza 2022</strong></a> </div>
+<div class="price">
+IDN 149,962,440 </div></div>
+<div id="pbox" class="cover">
+<div id="pbox" class="full">
+<img src="images/Renault_Kiger_RXT_Opt_DT_2022.jpg" id="thumb" class="noprice" alt="Renault Kiger RXT Opt DT 2022" title="Renault Kiger RXT Opt DT 2022"><br>
+<strong class="product-link">Renault Kiger RXT Opt DT 2022</strong></a> </div>
+<div class="price">
+IDN 149,962,440 </div></div>
+<div id="pbox" class="cover">
+<div id="pbox" class="full">
+<img src="images/Changan_Alsvin_V7_Comfort_2022.jpg" id="thumb" class="noprice" alt="Changan Alsvin V7 Comfort 2022" title="Changan Alsvin V7 Comfort 2022"><br>
+<strong class="product-link">Changan Alsvin V7 Comfort 2022</strong></a> </div>
+<div class="price">
+IDN 149,962,440 </div></div>
+<div id="pbox" class="cover">
+<div id="pbox" class="full">
+<img src="images/Suzuki_Baleno_Delta_AMT_2022.jpg" id="thumb" class="noprice" alt="Maruti Suzuki Baleno Delta AMT 2022" title="Maruti Suzuki Baleno Delta AMT 2022"><br>
+<strong class="product-link">Maruti Suzuki Baleno Delta AMT 2022</strong></a> </div>
+<div class="price">
+IDN 149,813,520 </div></div>
+
+</div>
+<div id="pbox" class="price-cover">
+<div id="pbox" class="latest-model">Latest Car Models</div> <div id="pbox" class="latest-model-price">Price in Indonesia </div>
+ <div id="pbox" class="latest-model">
+<strong class="product-link">Dodge Charger Police AWD 2023</strong></a></div>
+<div id="pbox" class="latest-model-price">
+IDN 634,845,960 </div>
+<div id="pbox" class="latest-model">
+<strong class="product-link">Dodge Charger Police 2023</strong></a></div>
+<div id="pbox" class="latest-model-price">
+IDN 641,547,360 </div>
+<div id="pbox" class="latest-model">
+<strong class="product-link">BMW X4 2022</strong></a></div>
+<div id="pbox" class="latest-model-price">
+IDN 1,325,388,000 </div>
+<div id="pbox" class="latest-model">
+<strong class="product-link">BMW M3 CS Sedan 2022</strong></a></div>
+<div id="pbox" class="latest-model-price">
+IDN 2,539,086,000 </div>
+<div id="pbox" class="latest-model">
+<strong class="product-link">Chevrolet Suburban High Country AWD 2022</strong></a></div>
+<div id="pbox" class="latest-model-price">
+IDN 1,295,455,080 </div>
+<div id="pbox" class="latest-model">
+<strong class="product-link">Chevrolet Silverado 1500 2022</strong></a></div>
+<div id="pbox" class="latest-model-price">
+IDN 515,263,200 </div>
+ <div id="pbox" class="latest-model">
+<strong class="product-link">Lotus Evija 2022</strong></a></div>
+<div id="pbox" class="latest-model-price">
+IDN 29,784,000,000 </div>
+<div id="pbox" class="latest-model">
+<strong class="product-link">Suzuki Futuro-e 2022</strong></a></div>
+<div id="pbox" class="latest-model-price">
+IDN 280,118,520 </div>
+</div>
+
+<div class="social-widget">
+<div class="pw-server-widget" data-id="wid-fn680s7m"></div></div>
+
+<footer>
+<style>
+
+.clist{float:left; width:100%; padding:0 15px 15px}
+
+li.footer{padding:10px; float:left;width:50%}
+
+li.upcoming{padding:10px; float:left;width:50%;background:#f2f2f2;border:1px solid #fff;}
+
+.to-top{font-size:20px;position: fixed;bottom:50px; right:10px;width:30px;height:30px;background:#ccc;border-radius:50%;padding:3px 0 0 5px; color:#142B72;opacity: 0.4;}
+
+
+@media (max-width:700px){
+
+.clist{float:left; width:100%; padding:0 0 5px 5px}
+
+li.footer{width:50%;padding:10px 0 10px 10px;}
+
+li.upcoming{padding:5px; float:left;width:50%}
+
+
+}
+
+@media (max-width:400px){
+
+li.footer{width:100%}
+
+li.upcoming{width:100%}
+}
+
+
+</style>
+
+</footer>
+<script src="js/rocket-loader.min.js" data-cf-settings="401819028090d05e795ef945-|49" defer></script>
+
+</body></html>
