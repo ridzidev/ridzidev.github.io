@@ -1,4 +1,5 @@
-[{
+{ "holidays" :
+  [{
   "name": "New Year Day",
   "date": "1st Jan Wednesday"
 }, {
@@ -65,3 +66,4 @@
   "name": "Hanukkah",
   "date": "11 Dec Friday"
 }]
+}
