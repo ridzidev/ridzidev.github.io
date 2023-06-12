@@ -1,0 +1,148 @@
+*::-webkit-scrollbar {
+    width: 0.875rem;
+}
+
+*::-webkit-scrollbar-button {
+    display: none;
+}
+
+*::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+    border-radius: 0.5rem;
+    border: 0.25rem solid transparent;
+    background-clip: content-box;
+    background-color: #bbbbbb;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    background-color: #aaaaaa;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    overflow: overlay;
+    font-family: 'Josefin Sans', sans-serif;
+    padding: 0 !important;
+}
+
+.font-estetik {
+    font-family: 'Sacramento', cursive !important;
+    color: #ffffff !important;
+}
+
+.cropper {
+    width: 14rem;
+    height: 14rem;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.cropper>img {
+    display: inline;
+    margin: 0 auto;
+    height: auto;
+    width: 100%;
+}
+
+.btn-music {
+    position: fixed;
+    bottom: 9vh;
+    right: 2vh;
+    z-index: 1055;
+}
+
+.loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #212529;
+    z-index: 1055 !important;
+}
+
+.card-body {
+    overflow-wrap: break-word !important;
+}
+
+/* dari alfa */
+.timeline {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #111111;
+    border-radius: 10px;
+    padding: 4px;
+    background-image: url('../assets/images/background.jpg');
+    background-size: cover;
+    width: 100%;
+      height: 100vh;
+}
+
+.timeline-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+    position: relative;
+}
+
+.timeline-item::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #ccc;
+    transform: translateY(-50%);
+    z-index: -1;
+}
+
+.timeline-item:first-child::before {
+    display: none;
+}
+
+.timeline-item .circle {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #e3e3e3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.timeline-item .circle img {
+    width: 95px;
+    height: 95px;
+    border-radius: 50%;
+}
+
+.timeline-item .time {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.timeline-item .icon {
+    position: absolute;
+    top: calc(50% - 15px);
+    right: -15px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #e3e3e3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    color: #555;
+}
