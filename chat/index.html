@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Primitive Learning : Note App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* Sembunyikan scroll pada body utama */
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            position: relative; /* Buat posisi absolut berdasarkan container */
+            height: 100vh; /* Atur tinggi container sesuai dengan tinggi viewport */
+            overflow: auto; /* Aktifkan scrolling jika ada lebih banyak catatan */
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .chat {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            margin-top: 10px; /* Ubah margin-top agar catatan dari bawah ke atas */
+            display: flex; /* Gunakan flexbox untuk mengatur posisi tanggal dan catatan */
+            justify-content: space-between; /* Posisikan tanggal dan catatan di ujung */
+            align-items: flex-start; /* Atur catatan di sebelah kiri */
+        }
+
+        .user-message {
+            background-color: #e2f7cb;
+            text-align: left; /* Ratakan teks catatan ke kiri */
+        }
+
+        .user-message .note-text {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            display: inline-block;
+            max-width: 100%;
+        }
+
+        .date {
+            text-align: right; /* Ratakan teks tanggal ke kanan */
+            color: #777;
+            font-size: 14px;
+        }
+
+        .input-form {
+            text-align: center;
+            position: absolute;
+            bottom: 0; /* Tempelkan input ke bagian bawah */
+            left: 0;
+            right: 0;
+            background-color: #fff;
+            padding: 10px;
+            border-top: 1px solid #ccc;
+        }
+
+        .input-form textarea {
+            width: 70%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+            resize: vertical; /* Izinkan resizing vertikal textarea */
+        }
+
+        .input-form button {
+            padding: 10px 20px;
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Primitive Learning Note App</h1>
+        
+        <!-- Display Existing Notes -->
+        <div id="existingData"></div>
+    </div>
+    
+    <!-- Input New Note -->
+    <div class="input-form">
+        <textarea id="note" name="note" placeholder="Enter your note..." required></textarea>
+        <button type="submit">Send</button>
+    </div>
+    
+    <script>
+        // Your Sheet2API endpoint URLs
+        var sheet2apiReadUrl = 'https://sheet2api.com/v1/4JB7VrgYQiqx/my-note';
+        var sheet2apiWriteUrl = 'https://sheet2api.com/v1/4JB7VrgYQiqx/my-note';
+
+        // Function to format a date string in the GMT+7 timezone
+        function formatTimestamp(timestamp) {
+            var date = new Date(timestamp);
+            var options = { timeZone: 'Asia/Bangkok', hour12: false };
+            return date.toLocaleString('en-US', options);
+        }
+
+        // Function to fetch and display existing notes
+        function fetchExistingNotes() {
+            axios.get(sheet2apiReadUrl)
+                .then(function(response) {
+                    var data = response.data;
+                    var existingDataDiv = document.getElementById('existingData');
+
+                    // Clear the existing notes
+                    existingDataDiv.innerHTML = '';
+
+                    // Display existing notes as chat messages (reversed order)
+                    if (data && data.length > 0) {
+                        // Reverse the order of notes
+                        data.reverse();
+
+                        data.forEach(function(item) {
+                            var chatMessage = document.createElement('div');
+                            chatMessage.classList.add('chat');
+
+                            if (item.note) {
+                                var formattedTimestamp = formatTimestamp(item.date);
+                                var formattedNote = item.note.replace(/\n/g, '<br>'); // Replace newline with <br>
+                                chatMessage.innerHTML = '<div class="user-message"><span class="note-text">' + formattedNote + '</span></div><div class="date">' + formattedTimestamp + '</div>';
+                            } else {
+                                chatMessage.innerHTML = '<div class="system-message">No note available.</div>';
+                            }
+
+                            existingDataDiv.appendChild(chatMessage);
+                        });
+                    } else {
+                        existingDataDiv.innerHTML = '<div class="system-message">No notes available.</div>';
+                    }
+                })
+                .catch(function(error) {
+                    console.error('Failed to fetch data from Sheet2API:', error);
+                });
+        }
+
+        // Event listener for form submission
+        document.querySelector('.input-form button').addEventListener('click', function() {
+            // Get the current timestamp
+            var timestamp = new Date().toISOString();
+
+            // Get the user's note input
+            var note = document.getElementById('note').value;
+
+            // Send a POST request to add a new note
+            axios.post(sheet2apiWriteUrl, { date: timestamp, note: note })
+                .then(function(response) {
+                    // Data successfully added
+                    console.log('New note added:', response.data);
+                    
+                    // Clear the note input
+                    document.getElementById('note').value = '';
+                    
+                    // Fetch and display updated notes
+                    fetchExistingNotes();
+                })
+                .catch(function(error) {
+                    console.error('Failed to add a new note:', error);
+                });
+        });
+
+        // Fetch and display existing notes when the page loads
+        fetchExistingNotes();
+    </script>
+</body>
+</html>
