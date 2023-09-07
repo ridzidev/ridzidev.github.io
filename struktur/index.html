@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Primitive Learning Website Structure</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Include Bootstrap JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <style>
+        /* Custom page styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #1f215f;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+            font-size: 24px;
+        }
+        .container {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 800px;
+        }
+        /* Style for the list items */
+        .list-group-item {
+            background-color: #fff;
+            border: none;
+        }
+        /* Style for the links */
+        .list-group-item a {
+            text-decoration: none;
+            color: #333;
+        }
+        /* Style for the nested lists */
+        .list-group-item ul {
+            list-style-type: none;
+            padding-left: 10px;
+        }
+        /* Background color for different levels of nesting */
+        .list-group-item ul .list-group-item {
+            background-color: #fff;
+        }
+        /* Different background colors for parent elements */
+        .list-group-item ul > .list-group-item {
+            background-color: #fff; /* Set the background color */
+            border: 5px solid #fff; /* Add a 1px solid border */
+            border-radius: 5px; /* Add border-radius for rounded corners */
+            padding: 5px; /* Add padding for spacing */
+        }
+
+        /* Different background colors for container and top-level list */
+        .container {
+            background-color: #fff;
+        }
+        .list-group {
+            background-color: #ccc;
+            font-weight: 800;
+        }
+
+        .red-text {
+            color: red;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <header>
+        Primitive Learning Website Structure
+    </header>
+    <div class="container">
+        <ul class="list-group">
+            <!-- Learning Website -->
+            <li class="list-group-item">
+                <a href="#">Primitive Learning Website</a>
+                <ul class="list-group">
+                    <!-- Landing Page -->
+                    <li class="list-group-item">
+                        <a style="color:#1f215f; font-size:2vw;" href="#">Landing Page</a>
+                        <ul class="list-group">
+                            <li class="list-group-item"><a href="#">Home</a></li>
+                            <li class="list-group-item"><a href="#">About Us</a></li>
+                            <li class="list-group-item"><a href="#">Contact Us</a></li>
+                            <li class="list-group-item"><a href="#">Blog</a></li>
+                        </ul>
+                    </li>
+                    <!-- Admin Page -->
+                    <li class="list-group-item">
+                        <a  style="color:#1f215f; font-size:2vw;" href="#">Admin Page</a>
+                        <ul class="list-group">
+                            <!-- Dashboard -->
+                            <li class="list-group-item">
+                                <a href="#">Dashboard</a>
+                                <ul class="list-group">
+                                    <!-- User Management -->
+                                    <li class="list-group-item">
+                                        <a href="#">User Management</a>
+                                        <ul class="list-group">
+                                            <li class="list-group-item"><a href="#">Add User</a></li>
+                                            <li class="list-group-item"><a href="#">Edit User</a></li>
+                                            <li class="list-group-item"><a href="#">Delete User</a></li>
+                                        </ul>
+                                    </li>
+                                    <!-- Course Management -->
+                                    <li class="list-group-item">
+                                        <a href="#">Course Management</a>
+                                        <ul class="list-group">
+                                            <li class="list-group-item"><a href="#">Add Course</a></li>
+                                            <li class="list-group-item"><a href="#">Edit Course</a></li>
+                                            <li class="list-group-item"><a href="#">Delete Course</a></li>
+                                        </ul>
+                                    </li>
+                                    <!-- Content Management -->
+                                    <li class="list-group-item">
+                                        <a href="#">Content Management</a>
+                                        <ul class="list-group">
+                                            <li class="list-group-item"><a href="#">Upload Content</a></li>
+                                            <li class="list-group-item"><a href="#">Edit Content</a></li>
+                                            <li class="list-group-item"><a href="#">Delete Content</a></li>
+                                        </ul>
+                                    </li>
+                                    <!-- Assignment Management -->
+                                    <li class="list-group-item">
+                                        <a href="#">Assignment Management</a>
+                                        <ul class="list-group">
+                                            <li class="list-group-item"><a href="#">Create Assignment</a></li>
+                                            <li class="list-group-item"><a href="#">Grade Assignments</a></li>
+                                        </ul>
+                                    </li>
+                                    <!-- Payment Management -->
+                                    <li class="list-group-item">
+                                        <a href="#">Payment Management</a>
+                                        <ul class="list-group">
+                                            <li class="list-group-item"><a href="#">View Payments</a></li>
+                                            <li class="list-group-item"><a href="#">Process Payments</a></li>
+                                        </ul>
+                                    </li>
+                                    <!-- Salary Management -->
+                                    <li class="list-group-item">
+                                        <a href="#">Salary Management</a>
+                                        <ul class="list-group">
+                                            <li class="list-group-item"><a href="#">Payroll</a></li>
+                                            <li class="list-group-item"><a href="#">Salary Reports</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="list-group-item"><a href="#">Analytics</a>
+                                <ul class="list-group">
+                                    <li class="list-group-item"><a href="#">User Analytics</a></li>
+                                    <li class="list-group-item"><a href="#">Course Analytics</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- Student Page -->
+                    <li class="list-group-item">
+                        <a href="#" style="color:#1f215f; font-size:2vw;">Student Page</a>
+                        <ul class="list-group">
+                            <!-- Profile -->
+                            <li class="list-group-item">
+                                <a href="#">Profile</a>
+                                <ul class="list-group">
+                                    <li class="list-group-item"><a href="#">Edit Profile</a></li>
+                                    <li class="list-group-item"><a href="#">Change Password</a></li>
+                                </ul>
+                            </li>
+                            <!-- Courses -->
+                            <li class="list-group-item">
+                                <a href="#">Courses</a>
+                                <ul class="list-group">
+                                    <li class="list-group-item"><a href="#">Enroll in Course</a></li>
+                                    <li class="list-group-item"><a href="#">View Course Progress</a></li>
+                                    <li class="list-group-item"><a href="#">Access Course Materials</a></li>
+                                </ul>
+                            </li>
+                            <!-- Quizzes -->
+                            <li class="list-group-item">
+                                <a href="#">Quizzes</a>
+                                <ul class="list-group">
+                                    <li class="list-group-item"><a href="#">Take Quizzes</a></li>
+                                    <li class="list-group-item"><a href="#">View Quiz Results</a></li>
+                                </ul>
+                            </li>
+                            <!-- Assignments -->
+                            <li class="list-group-item">
+                                <a href="#">Assignments</a>
+                                <ul class="list-group">
+                                    <li class="list-group-item"><a href="#">Submit Assignments</a></li>
+                                    <li class="list-group-item"><a href="#">View Assignment Grades</a></li>
+                                </ul>
+                            </li>
+                            <!-- Forums -->
+                            <li class="list-group-item">
+                                <a href="#">Forums</a>
+                                <ul class="list-group">
+                                    <li class="list-group-item"><a href="#">Join Discussions</a></li>
+                                    <li class="list-group-item"><a href="#">Post Questions</a></li>
+                                    <li class="list-group-item"><a href="#">Reply to Threads</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- Teacher Page -->
+                    <li class="list-group-item">
+                        <a href="#" style="color:#1f215f; font-size:2vw;">Teacher Page</a>
+                        <ul class="list-group">
+                            <!-- Profile -->
+                            <li class="list-group-item">
+                                <a href="#">Profile</a>
+                                <ul class="list-group">
+                                    <li class="list-group-item"><a href="#">Edit Profile</a></li>
+                                    <li class="list-group-item"><a href="#">Change Password</a></li>
+                                </ul>
+                            </li>
+                            <!-- Courses -->
+                            <li class="list-group-item">
+                                <a href="#">Courses</a>
+                                <ul class="list-group">
+                                    <li class="list-group-item"><a href="#">Create New Course</a></li>
+                                    <li class="list-group-item"><a href="#">Manage Course Content</a></li>
+                                    <li class="list-group-item"><a href="#">Grade Assignments</a></li>
+                                </ul>
+                            </li>
+                            <!-- Students -->
+                            <li class="list-group-item">
+                                <a href="#">Students</a>
+                                <ul class="list-group">
+                                    <li class="list-group-item"><a href="#">View Student List</a></li>
+                                    <li class="list-group-item"><a href="#">Monitor Student Progress</a></li>
+                                </ul>
+                            </li>
+                            <!-- Forums -->
+                            <li class="list-group-item">
+                                <a href="#">Forums</a>
+                                <ul class="list-group">
+                                    <li class="list-group-item"><a href="#">Create Discussion Threads</a></li>
+                                    <li class="list-group-item"><a href="#">Moderate Discussions</a></li>
+                                    <li class="list-group-item"><a href="#">Answer Student Questions</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- Finance Department -->
+                    <li class="list-group-item">
+                        <a href="#" style="color:#1f215f; font-size:2vw;">Finance Department</a>
+                        <ul class="list-group">
+                            <!-- Accounting -->
+                            <li class="list-group-item">
+                                <a href="#">Accounting</a>
+                                <ul class="list-group">
+                                    <li class="list-group-item"><a href="#">Financial Reports</a></li>
+                                    <li class="list-group-item"><a href="#">Budgeting</a></li>
+                                </ul>
+                            </li>
+                            <!-- Payroll -->
+                            <li class="list-group-item">
+                                <a href="#">Payroll</a>
+                                <ul class="list-group">
+                                    <li class="list-group-item"><a href="#">Employee Salaries</a></li>
+                                    <li class="list-group-item"><a href="#">Payroll Processing</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- Human Resources -->
+                    <li class="list-group-item">
+                        <a href="#" style="color:#1f215f; font-size:2vw;">Human Resources</a>
+                        <ul class="list-group">
+                            <!-- Employee Management -->
+                            <li class="list-group-item">
+                                <a href="#">Employee Management</a>
+                                <ul class="list-group">
+                                    <li class="list-group-item"><a href="#">Add Employee</a></li>
+                                    <li class="list-group-item"><a href="#">Edit Employee Details</a></li>
+                                    <li class="list-group-item"><a href="#">Terminate Employee</a></li>
+                                </ul>
+                            </li>
+                            <!-- Recruitment -->
+                            <li class="list-group-item">
+                                <a href="#">Recruitment</a>
+                                <ul class="list-group">
+                                    <li class="list-group-item"><a href="#">Job Postings</a></li>
+                                    <li class="list-group-item"><a href="#">Applicant Tracking</a></li>
+                                </ul>
+                            </li>
+                            <!-- Training and Development -->
+                            <li class="list-group-item">
+                                <a href="#">Training and Development</a>
+                                <ul class="list-group">
+                                    <li class="list-group-item"><a href="#">Employee Training Programs</a></li>
+                                    <li class="list-group-item"><a href="#">Training Records</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- Support -->
+                    <li class="list-group-item">
+                        <a href="#" style="color:#1f215f; font-size:2vw;">Support</a>
+                        <ul class="list-group">
+                            <li class="list-group-item"><a href="#">Help Center</a></li>
+                            <li class="list-group-item"><a href="#">Contact Support</a></li>
+                            <li class="list-group-item"><a href="#">FAQs</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>
