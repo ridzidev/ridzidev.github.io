@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pokemon Information</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        /* CSS for the body */
+        body {
+            background: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin-top: 75px;
+        }
+
+        /* CSS for the container */
+        .container {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            text-align: center;
+            width: 100%;
+        }
+
+        /* CSS for the header */
+        h1 {
+            color: #1f215f;
+            font-family: 'Poppins', sans-serif;
+            font-size: 32px;
+            
+        }
+
+        /* CSS for the Pokemon image */
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            
+        }
+
+        /* CSS for the data */
+        .data-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            text-align: left;
+        }
+
+        p {
+            font-size: 18px;
+            color: #333;
+            margin: 10px 0;
+        }
+
+        .icon {
+            color: #1f215f;
+        }
+
+        /* CSS for the stat bars */
+        .stat-bar {
+            background-color: #1f215f;
+            height: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="" alt="Pikachu">
+        <div class="data-container" id="pokemon-info">
+            <!-- JSON data will be displayed here -->
+        </div>
+        <div class="stat-bars" id="stat-bars">
+            <!-- Stat bars will be displayed here -->
+        </div>
+    </div>
+
+    <script>
+        // JavaScript to fetch and display JSON data
+        // const apiUrl = 'https://pokeapi.co/api/v2/pokemon/pikachu';
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const pokemonName = urlParams.get('apiurl') || 'pikachu';
+        const apiUrl = `https://pokeapi.co/api/v2/pokemon/${pokemonName}`;
+
+        fetch(apiUrl)
+            .then(response => response.json())
+            .then(data => {
+                const pokemonInfo = document.getElementById('pokemon-info');
+                const statBars = document.getElementById('stat-bars');
+                document.querySelector('img').src = data.sprites.front_default;
+                pokemonInfo.innerHTML = `
+                    <p><i class="fa fa-user icon"></i> <strong>Name:</strong><br> ${data.name}</p>
+                    <p><i class="fa fa-arrows-v icon"></i> <strong>Height:</strong><br> ${data.height} decimetres</p>
+                    <p><i class="fa fa-balance-scale icon"></i> <strong>Weight:</strong><br> ${data.weight} hectograms</p>
+                    <p><i class="fa fa-bolt icon"></i> <strong>Abilities:</strong><br> ${data.abilities.map(ability => ability.ability.name).join('<br>')}</p>
+                    <p><i class="fa fa-tag icon"></i> <strong>Types:</strong><br> ${data.types.map(type => type.type.name).join('<br>')}</p>
+                    <p><i class="fa fa-trophy icon"></i> <strong>Base Experience:</strong><br> ${data.base_experience}</p>
+                `;
+
+                statBars.innerHTML = data.stats.map(stat => `
+                    <p><i class="fa fa-bar-chart icon"></i> <strong>${stat.stat.name}:</strong> ${stat.base_stat}</p>
+                    <div class="stat-bar" style="width: ${stat.base_stat}%;"></div>
+                `).join('');
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+                const pokemonInfo = document.getElementById('pokemon-info');
+                const statBars = document.getElementById('stat-bars');
+                pokemonInfo.innerHTML = '<p>Error fetching data. Please try again later.</p>';
+                statBars.innerHTML = '';
+            });
+    </script>
+</body>
+</html>
