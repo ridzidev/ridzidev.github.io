@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday, Desmayanti Nasution!</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+    }
+
+    #birthday-card {
+      background-color: #ffecf2;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 600px;
+    }
+
+    h1 {
+      color: #ff69b4;
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: #333;
+      font-size: 16px;
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+
+    #header-image {
+      width: 100%;
+      max-width: 100%;
+      border-radius: 15px 15px 0 0;
+    }
+
+    #heart {
+      color: #ff69b4;
+      font-size: 20px;
+    }
+
+    #confetti {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .confetti {
+      position: absolute;
+      background-color: #ff69b4;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      opacity: 0.7;
+      animation: confetti-fall linear infinite;
+    }
+
+    @keyframes confetti-fall {
+      0% {
+        transform: translateY(0) rotate(0deg);
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+      }
+    }
+
+    @media screen and (max-width: 600px) {
+      h1 {
+        font-size: 24px;
+      }
+
+      p {
+        font-size: 14px;
+        margin-bottom: 10px;
+      }
+    }
+
+    /* Media query for screens smaller than 600px (typical phone screens) */
+    @media screen and (max-width: 600px) {
+      #birthday-card {
+        padding: 15px;
+        margin: 15px auto;
+        max-width: 300px;
+      }
+
+      h1 {
+        font-size: 24px;
+      }
+
+      p {
+        font-size: 14px;
+        margin-bottom: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="birthday-card">
+    
+    
+    <h1><span id="heart">❤️</span> Happy Birthday, Desmayanti Nasution! <span id="heart">❤️</span></h1>
+    
+    <img id="header-image" src="photo.png" alt="Birthday Header Image">
+
+    <audio controls autoplay>
+      <source src="music.mp3" type="audio/mp3">
+      Your browser does not support the audio element.
+    </audio>
+    
+
+    <p>Congratulations on your 26th birthday, my beloved wife!</p>
+    <p>This marks your first birthday as my wife, and I couldn't be happier. Celebrating this special moment with you fills my heart with joy and gratitude.</p>
+    <p>May this day bring you immense happiness, love, and beautiful memories that we'll cherish throughout our lives together.</p>
+    <p>Thank you for being a part of my life. Wishing you a year ahead filled with happiness and remarkable achievements. Happy birthday, my love!</p>
+    <p>With all my love, M. Alfa Ridzi</p>
+
+  </div>
+
+  <div id="confetti"></div>
+
+  <script>
+    function createConfetti() {
+      const confettiContainer = document.getElementById('confetti');
+
+      for (let i = 0; i < 50; i++) {
+        const confetti = document.createElement('div');
+        confetti.className = 'confetti';
+        confetti.style.left = `${Math.random() * 100}vw`;
+        confetti.style.animationDuration = `${Math.random() * 3 + 1}s`;
+
+        confettiContainer.appendChild(confetti);
+      }
+    }
+
+    // Uncomment the line below to activate confetti
+    createConfetti();
+  </script>
+</body>
+</html>
