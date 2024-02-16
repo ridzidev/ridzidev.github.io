@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pesan</title>
+<style>
+    body {
+        font-family: 'Orbitron', sans-serif;
+        background-color: #000;
+        color: #e8ff00;
+        margin: 0;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .marquee-container {
+        position: relative;
+        width: 80%;
+        height: 100px;
+        overflow: hidden;
+    }
+
+    .marquee {
+        white-space: nowrap;
+        font-size: 3em;
+        text-transform: uppercase;
+        animation: neon-glow 1s ease-in-out alternate infinite, move-left 10s linear infinite;
+    }
+
+    @keyframes neon-glow {
+        0% { text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #ff00ff; }
+        100% { text-shadow: 0 0 20px #ff00ff, 0 0 30px #ff00ff, 0 0 40px #ff00ff; }
+    }
+
+    @keyframes move-left {
+        0% { transform: translateX(100%); }
+        100% { transform: translateX(-100%); }
+    }
+</style>
+</head>
+<body>
+<div class="marquee-container">
+    <div class="marquee">
+        <!-- Text you want to display -->
+        <span>Hi Sayang Ku... SUAMI LAPAR HEHEHE....</span>
+    </div>
+</div>
+</body>
+</html>
