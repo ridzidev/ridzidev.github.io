@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Image Generator</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            display: flex;
+            height: 100vh;
+        }
+        .input-section {
+            width: 40%;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            text-align: center;
+            position: relative;
+        }
+        .result-section {
+            width: 60%;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #fff;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            position: relative;
+        }
+        h1 {
+            font-size: 2.5em;
+            color: #4A90E2;
+            margin-bottom: 20px;
+        }
+        select, textarea {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        textarea {
+            height: 100px;
+            resize: vertical;
+        }
+        button {
+            background-color: #4A90E2;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background-color: #357ABD;
+        }
+        #loadingOverlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+            display: none;
+        }
+        img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 8px;
+        }
+        .loading-time {
+            margin-top: 10px;
+            font-size: 1.2em;
+            color: #333;
+        }
+    </style>
+    <script>
+        let timer;
+        let seconds = 0;
+
+        async function query(data) {
+            const response = await fetch("https://api-inference.huggingface.co/models/stablediffusionapi/mklan-xxx-nsfw-pony", {
+                headers: {
+                    Authorization: "Bearer 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",
+                    "Content-Type": "application/json",
+                },
+                method: "POST",
+                body: JSON.stringify(data),
+            });
+
+            if (!response.ok) {
+                const errorMessage = await response.text();
+                console.error('Error from API:', errorMessage);
+                throw new Error(`API request failed: ${response.status} ${response.statusText}`);
+            }
+
+            const result = await response.blob();
+            return result;
+        }
+
+        async function generateImage(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const prompt = formData.get('prompt');
+            const timestamp = Math.floor(Date.now() / 1000); // Get current timestamp in seconds
+            const updatedPrompt = `${prompt}, (on number ${timestamp})`; // Append timestamp to prompt
+            const data = { "inputs": updatedPrompt }; // Use updated prompt
+
+            document.getElementById("loadingOverlay").style.display = "flex";
+            seconds = 0;
+            timer = setInterval(() => {
+                seconds++;
+                document.getElementById("loadingTime").innerText = `Waiting time: ${seconds} seconds`;
+            }, 1000);
+
+            try {
+                const imgBlob = await query(data);
+                const imgURL = URL.createObjectURL(imgBlob);
+                document.getElementById("resultImage").src = imgURL;
+                document.getElementById("resultTimestamp").innerText = `Take on: ${new Date().toLocaleString()}`; // Display timestamp
+                document.getElementById("resultSection").style.display = "block";
+            } catch (error) {
+                console.error('Error generating image:', error);
+                alert('An error occurred while generating the image. Please try again.');
+            } finally {
+                clearInterval(timer);
+                document.getElementById("loadingOverlay").style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="input-section">
+        <h1>AI Image Generator</h1>
+        <form onsubmit="generateImage(event)">
+            <label for="prompt">Enter your prompt:</label>
+            <textarea name="prompt" placeholder="Enter your prompt" required></textarea>
+            <button type="submit">Generate Image</button>
+        </form>
+        <div id="loadingOverlay">
+            <div>
+                <div>Loading...</div>
+                <div id="loadingTime" class="loading-time">Waiting time: 0 seconds</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="result-section" id="resultSection" style="display: none;">
+        <h2>Generated Image</h2>
+        <img id="resultImage" alt="Generated Image">
+        <p id="resultTimestamp" class="loading-time"></p> <!-- Timestamp display -->
+        <button onclick="location.reload();">Generate Another Image</button>
+    </div>
+</body>
+</html>
