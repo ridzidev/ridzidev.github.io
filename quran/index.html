@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quran App</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Scheherazade:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            
+        }
+        h1 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #333333;
+        }
+        .ayah {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ced4da;
+            padding-bottom: 20px;
+        }
+
+        .ayah-number {
+            font-weight: bold;
+            color: #007bff;
+            margin-bottom: 5px;
+        }
+
+        .ayah-text {
+            margin-top: 5px;
+        }
+
+        .arabic-text {
+            font-family: "Scheherazade", Arial, sans-serif; /* Use Scheherazade font for Arabic text */
+            font-size: 36px;
+            text-align: right; /* Align text to the right */
+        }
+
+        .indonesian-text {
+            font-family: "Arial", sans-serif; /* Use appropriate font for Indonesian text */
+            color: #333333;
+        }
+
+        /* Loading animation */
+        .loading {
+            display: none; /* Initially hidden */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.9);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .loading-spinner {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .loading p {
+            text-align: center;
+            margin-top: 10px;
+            color : green;
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #ffffff;
+            padding: 10px -10;
+            text-align: center;
+            z-index: 1000;
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+            font-size: 10px;
+        }
+
+
+    </style>
+</head>
+<body>
+
+    <div class="loading">
+        <div class="loading-spinner"></div>
+        <?php if (isset($juz_arabic['number']) && !empty($juz_arabic['number'])): ?>
+            <p>Loading the Quran Data of Juz <?php echo $juz_arabic['number']; ?></p>
+        <?php else: ?>
+            <p>Loading the Quran Data</p>
+        <?php endif; ?>
+    </div>
+
+
+    <div class="container">
+        <h1 class="text-center">Quran App</h1>
+        
+        <form action="" method="post" id="quran-form">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="surah">Select Surah:</label>
+                    <select class="form-control" name="surah" id="surah">
+                        <option value="">Select Surah</option>
+                        <?php
+                        $api_url = 'https://equran.id/api/v2/surat';
+                        $response = file_get_contents($api_url);
+                        if ($response !== false) {
+                            $data = json_decode($response, true);
+                            if ($data !== null && isset($data['data'])) {
+                                foreach ($data['data'] as $surah) {
+                                    echo "<option value=\"{$surah['nomor']}\">{$surah['nama']} ({$surah['namaLatin']})</option>";
+                                }
+                            }
+                        }
+                        ?>
+                    </select>
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label for="juz">Select Juz:</label>
+                    <select class="form-control" name="juz" id="juz">
+                        <option value="">Select Juz</option>
+                        <?php
+                        for ($juz = 1; $juz <= 30; $juz++) {
+                            echo "<option value=\"$juz\">Juz $juz</option>";
+                        }
+                        ?>
+                    </select>
+                </div>
+            </div>
+
+        </form>
+
+        <div class="content">
+        <?php
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                echo "<script>document.querySelector('.loading').style.display = 'block';</script>"; // Show loading animation
+
+                if (isset($_POST['surah']) && !empty($_POST['surah'])) {
+                    $surah_number = $_POST['surah'];
+                    $surah_api_url = "https://equran.id/api/v2/surat/$surah_number";
+                    $surah_response = file_get_contents($surah_api_url);
+                    if ($surah_response !== false) {
+                        $surah_data = json_decode($surah_response, true);
+                        if ($surah_data !== null && isset($surah_data['data'])) {
+                            $surah = $surah_data['data'];
+                            echo "<h2>{$surah['nama']} ({$surah['namaLatin']})</h2>";
+                            echo "<p>{$surah['deskripsi']}</p>";
+                            foreach ($surah['ayat'] as $ayah) {
+                                echo "<div class=\"ayah\">";
+                                echo "<p class=\"ayah-number\"><strong>Ayat {$ayah['nomorAyat']}:</strong></p>";
+                                echo "<p class=\"ayah-text arabic-text\">{$ayah['teksArab']}</p>";
+                                echo "<p class=\"ayah-text indonesian-text\">{$ayah['teksIndonesia']}</p>";
+                                echo "</div>";
+                            }
+                        }
+                    }
+                } elseif (isset($_POST['juz']) && !empty($_POST['juz'])) {
+                    $juz_number = $_POST['juz'];
+                    $juz_api_url_arabic = "https://api.alquran.cloud/v1/juz/$juz_number/quran-simple";
+                    $juz_api_url_translate = "https://api.alquran.cloud/v1/juz/$juz_number/id.indonesian";
+
+                    // Fetch Arabic text
+                    $juz_response_arabic = file_get_contents($juz_api_url_arabic);
+                    $juz_response_translate = file_get_contents($juz_api_url_translate);
+
+                    if ($juz_response_arabic !== false && $juz_response_translate !== false) {
+                        $juz_data_arabic = json_decode($juz_response_arabic, true);
+                        $juz_data_translate = json_decode($juz_response_translate, true);
+
+                        if ($juz_data_arabic !== null && isset($juz_data_arabic['data']) && 
+                            $juz_data_translate !== null && isset($juz_data_translate['data'])) {
+
+                            $juz_arabic = $juz_data_arabic['data'];
+                            $juz_translate = $juz_data_translate['data'];
+
+                            echo "<h2>Juz {$juz_arabic['number']}</h2>";
+
+                            // Assuming both arrays have the same length
+                            foreach ($juz_arabic['ayahs'] as $index => $ayah_arabic) {
+                                $ayah_translate = $juz_translate['ayahs'][$index]; // Assuming both arrays have the same length
+                            
+                                echo "<div class=\"ayah\">";
+                                echo "<p class=\"ayah-number\"><strong>Ayat {$ayah_arabic['numberInSurah']}</strong></p>";
+                                echo "<p class=\"ayah-text arabic-text\">{$ayah_arabic['text']}</p>";
+                                echo "<p class=\"ayah-text indonesian-text\">{$ayah_translate['text']}</p>";
+                                echo "</div>";
+                            }
+                            
+                        }
+                    }
+
+                
+            } else {
+                    echo "<p>Please select a surah or juz.</p>";
+                }
+
+                echo "<script>document.querySelector('.loading').style.display = 'none';</script>"; // Hide loading animation after content is loaded
+            }
+        ?>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2023-<?php echo date("Y"); ?> Quran App by <a href="https://primaginary.my.id/" target="_blank">Primaginary Learning</a> Platfom, M. Alfa Ridzi,S. Mat</p>
+    </div>
+
+
+    <script>
+
+    // Function to handle select change events
+    function handleSelectChangeSurah() {
+
+        var surahSelect = document.getElementById('surah');
+        var selectedSurah = surahSelect.options[surahSelect.selectedIndex].text;
+        document.querySelector('.loading p').innerHTML = "Loading the Quran Data for Surah : " + selectedSurah;
+        document.querySelector('.loading').style.display = 'block';
+
+        document.getElementById('quran-form').submit(); // Submit the form when a selection is made
+    }
+    function handleSelectChangeJuz() {
+
+        var juzSelect = document.getElementById('juz');
+        var selectedJuz = juzSelect.options[juzSelect.selectedIndex].text;
+        document.querySelector('.loading p').innerHTML = "Loading the Quran Data for Juz : " + selectedJuz;
+        document.querySelector('.loading').style.display = 'block';
+
+        document.getElementById('quran-form').submit(); // Submit the form when a selection is made
+    }
+
+    // Add event listeners to both select elements
+    document.getElementById('surah').addEventListener('change', handleSelectChangeSurah);
+    document.getElementById('juz').addEventListener('change', handleSelectChangeJuz);
+
+</script>
+
+</body>
+</html>
