@@ -99,7 +99,8 @@
             "Flux RealismLora": "https://api-inference.huggingface.co/models/XLabs-AI/flux-RealismLora",
             "Flux RedditReality": "https://api-inference.huggingface.co/models/RareConcepts/Flux.1-dev-LoRA-r128-RedditReality",
             "Flux uncensored": "https://api-inference.huggingface.co/models/enhanceaiteam/Flux-uncensored",
-            "Flux uncensored V2": "https://api-inference.huggingface.co/models/enhanceaiteam/Flux-uncensored-V2" 
+            "Flux uncensored V2": "https://api-inference.huggingface.co/models/enhanceaiteam/Flux-uncensored-V2",
+            "flux-lora-uncensored": "https://api-inference.huggingface.co/models/prashanth970/flux-lora-uncensored",
         };
 
         async function query(data, modelUrl, attempts = 5) {
@@ -175,8 +176,9 @@
             <select name="model" required>
                 <option value="Flux schnell">Flux schell</option>
                 <option value="Flux Dev">Flux Dev</option>
-                <option value="Flux uncensored">Flux uncensored</option>
-                <option value="Flux uncensored V2">Flux uncensored V2</option>
+                <option value="flux-lora-uncensored">flux-lora-uncensored</option>
+<!--                 <option value="Flux uncensored">Flux uncensored</option>
+                <option value="Flux uncensored V2">Flux uncensored V2</option> -->
                 <option value="Flux RealismLora">Flux RealismLora</option>
                 <option value="Flux RedditReality">Flux RedditReality</option>
                 <option value="New Reality XL">New Reality XL</option>
