@@ -101,6 +101,7 @@
             "Flux uncensored": "https://api-inference.huggingface.co/models/enhanceaiteam/Flux-uncensored",
             "Flux uncensored V2": "https://api-inference.huggingface.co/models/enhanceaiteam/Flux-uncensored-V2",
             "flux-lora-uncensored": "https://api-inference.huggingface.co/models/prashanth970/flux-lora-uncensored",
+            "nsfw-xl": "https://api-inference.huggingface.co/models/Dremmar/nsfw-xl",
         };
 
         async function query(data, modelUrl, attempts = 5) {
@@ -185,6 +186,7 @@
                 <option value="OmniGen XL">OmniGen XL</option>
                 <option value="Mklan XXX">Mklan XXX</option>
                 <option value="Explicit Freedom">Explicit Freedom</option>
+                <option value="nsfw-xl">Dremmar/nsfw-xl</option>
             </select>
             <label for="prompt">Enter your prompt:</label>
             <textarea name="prompt" placeholder="Enter your prompt" required></textarea>
