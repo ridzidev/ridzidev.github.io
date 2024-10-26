@@ -102,6 +102,8 @@
             "Flux uncensored V2": "https://api-inference.huggingface.co/models/enhanceaiteam/Flux-uncensored-V2",
             "flux-lora-uncensored": "https://api-inference.huggingface.co/models/prashanth970/flux-lora-uncensored",
             "nsfw-xl": "https://api-inference.huggingface.co/models/Dremmar/nsfw-xl",
+            "newrealityxl": "https://api-inference.huggingface.co/models/stablediffusionapi/newrealityxl-global-nsfw",
+            "real3d": "https://api-inference.huggingface.co/models/stablediffusionapi/duchaiten-real3d-nsfw-xl",
         };
 
         async function query(data, modelUrl, attempts = 5) {
@@ -187,6 +189,8 @@
                 <option value="Mklan XXX">Mklan XXX</option>
                 <option value="Explicit Freedom">Explicit Freedom</option>
                 <option value="nsfw-xl">Dremmar/nsfw-xl</option>
+                <option value="newrealityxl">newrealityxl nsfw-xl</option>
+                <option value="real3d">real3d nsfw-xl</option>
             </select>
             <label for="prompt">Enter your prompt:</label>
             <textarea name="prompt" placeholder="Enter your prompt" required></textarea>
