@@ -104,6 +104,8 @@
             "nsfw-xl": "https://api-inference.huggingface.co/models/Dremmar/nsfw-xl",
             "newrealityxl": "https://api-inference.huggingface.co/models/stablediffusionapi/newrealityxl-global-nsfw",
             "real3d": "https://api-inference.huggingface.co/models/stablediffusionapi/duchaiten-real3d-nsfw-xl",
+            "bajihtest": "https://api-inference.huggingface.co/models/getad72493/bajih_test",
+            "bajihtestflux": "https://api-inference.huggingface.co/models/getad72493/bajih_test",
         };
 
         async function query(data, modelUrl, attempts = 5) {
@@ -191,6 +193,8 @@
                 <option value="nsfw-xl">Dremmar/nsfw-xl</option>
                 <option value="newrealityxl">newrealityxl nsfw-xl</option>
                 <option value="real3d">real3d nsfw-xl</option>
+                <option value="bajihtest">bajihtest</option>
+                <option value="bajihtest">bajihtest flux</option>
             </select>
             <label for="prompt">Enter your prompt:</label>
             <textarea name="prompt" placeholder="Enter your prompt" required></textarea>
