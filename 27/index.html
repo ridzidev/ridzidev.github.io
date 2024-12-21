@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday</title>
+  <style>
+    body {
+      background-color: black;
+      color: white;
+      font-family: "Courier New", Courier, monospace;
+      text-align: center;
+      padding: 50px;
+    }
+    #message {
+      white-space: pre;
+      font-size: 18px;
+      display: inline-block;
+      text-align: left;
+      margin: auto;
+      line-height: 1.6;
+    }
+    #message span {
+      color: #ff5722;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎉 Happy Birthday My Love 🎉</h1>
+  <div id="message"></div>
+  <audio id="audio" src="happy_birthday.mp3" autoplay loop></audio>
+
+  <script>
+    
+    const messageLines = [
+    "🎉✨ HAPPY BIRTHDAY, DESMAYANTI NASUTION RIDZI ✨🎉\n",
+    "💖 Semoga yang terbaik untuk istriku tercinta 💖\n",
+    "🎂 Selamat ulang tahun yang ke 3³ ya, sayang 🎂\n",
+    "💌 Love you selalu! 💌\n",
+    "🌹❤️ Dari suamimu yang selalu mencintaimu ❤️🌹\n"
+    ];
+
+
+    const messageDiv = document.getElementById("message");
+
+    let index = 0;
+    let charIndex = 0;
+
+    function typeMessage() {
+      if (index < messageLines.length) {
+        if (charIndex < messageLines[index].length) {
+          messageDiv.innerHTML += messageLines[index][charIndex];
+          charIndex++;
+          setTimeout(typeMessage, 100);
+        } else {
+          messageDiv.innerHTML += "<br>";
+          charIndex = 0;
+          index++;
+          setTimeout(typeMessage, 300);
+        }
+      }
+    }
+
+    // Start the typewriter effect
+    typeMessage();
+  </script>
+</body>
+</html>
