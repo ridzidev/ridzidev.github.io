@@ -10,18 +10,37 @@
       color: white;
       font-family: "Courier New", Courier, monospace;
       text-align: center;
-      padding: 50px;
+      padding: 10px; /* Adjusted padding for smaller screens */
+      margin: 0;
+    }
+    h1 {
+      font-size: 2rem; /* Make the heading responsive */
     }
     #message {
       white-space: pre;
-      font-size: 18px;
+      font-size: 16px; /* Adjusted font size for better readability on small screens */
       display: inline-block;
       text-align: left;
       margin: auto;
       line-height: 1.6;
+      max-width: 100%;
+      word-wrap: break-word; /* Ensure long lines break */
     }
     #message span {
       color: #ff5722;
+    }
+
+    /* Media Query for mobile devices */
+    @media (max-width: 600px) {
+      body {
+        padding: 20px;
+      }
+      h1 {
+        font-size: 1.5rem;
+      }
+      #message {
+        font-size: 14px; /* Slightly smaller font size on mobile */
+      }
     }
   </style>
 </head>
@@ -31,15 +50,13 @@
   <audio id="audio" src="happy_birthday.mp3" autoplay loop></audio>
 
   <script>
-    
     const messageLines = [
-    "🎉✨ HAPPY BIRTHDAY, DESMAYANTI NASUTION RIDZI ✨🎉\n",
-    "💖 Semoga yang terbaik untuk istriku tercinta 💖\n",
-    "🎂 Selamat ulang tahun yang ke 3³ ya, sayang 🎂\n",
-    "💌 Love you selalu! 💌\n",
-    "🌹❤️ Dari suamimu yang selalu mencintaimu ❤️🌹\n"
+      "🎉✨ HAPPY BIRTHDAY, DESMAYANTI NASUTION RIDZI ✨🎉\n",
+      "💖 Semoga yang terbaik untuk istriku tercinta 💖\n",
+      "🎂 Selamat ulang tahun yang ke 3³ ya, sayang 🎂\n",
+      "💌 Love you selalu! 💌\n",
+      "🌹❤️ Dari suamimu yang selalu mencintaimu ❤️🌹\n"
     ];
-
 
     const messageDiv = document.getElementById("message");
 
