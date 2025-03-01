@@ -202,20 +202,27 @@
             contentDiv.innerHTML = `
                 <h2 class="text-center mb-4">${surah.namaLatin} (${surah.nama})</h2>
                 <p class="text-muted mb-4">${surah.deskripsi}</p>`;
-
+        
             surah.ayat.forEach(ayah => {
+                // Format Surah and Ayah numbers to match EveryAyah.com format
+                const surahNumber = ayah.surah.nomor.toString().padStart(3, '0'); // e.g., 001 for Al-Fatiha
+                const ayahNumber = ayah.nomorAyat.toString().padStart(3, '0'); // e.g., 001 for first Ayah
+        
+                const audioUrl = `https://everyayah.com/data/Abdul_Basit_Murattal_64kbps/${surahNumber}${ayahNumber}.mp3`;
+        
                 contentDiv.innerHTML += `
                     <div class="ayah">
                         <div class="ayah-number text-primary mb-2">Ayat ${ayah.nomorAyat}</div>
                         <div class="arabic-text mb-3">${ayah.teksArab}</div>
                         <div class="indonesian-text mb-3">${ayah.teksIndonesia}</div>
                         <audio controls class="mb-4">
-                            <source src="${ayah.audio}" type="audio/mpeg">
+                            <source src="${audioUrl}" type="audio/mpeg">
                             Browser tidak mendukung audio.
                         </audio>
                     </div>`;
             });
         }
+
 
         function displayJuz(juzArabic, juzTranslation) {
             const contentDiv = document.getElementById('content');
