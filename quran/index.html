@@ -107,6 +107,17 @@
         .dark-mode .indonesian-text {
             color: #ffffff;
         }
+        .ornament {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 100px;
+            background-image: url('https://example.com/ornament.png'); /* Replace with your ornament image URL */
+            background-size: cover;
+            opacity: 0.5;
+        }
     </style>
 </head>
 <body>
@@ -130,6 +141,7 @@
     </div>
 
     <div class="container">
+        <div class="ornament"></div>
         <h1 class="text-center">Quran App</h1>
 
         <form id="quran-form">
