@@ -6,16 +6,17 @@
     <title>Quran App</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Scheherazade:wght@400;700&display=swap" rel="stylesheet">
-
     <style>
         body {
             background-color: #f8f9fa;
+            transition: background-color 0.3s;
         }
         .container {
             background-color: #ffffff;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             padding: 20px;
+            margin-top: 20px;
         }
         h1 {
             font-size: 32px;
@@ -27,31 +28,25 @@
             border-bottom: 1px solid #ced4da;
             padding-bottom: 20px;
         }
-
         .ayah-number {
             font-weight: bold;
             color: #007bff;
             margin-bottom: 5px;
         }
-
         .ayah-text {
             margin-top: 5px;
         }
-
         .arabic-text {
-            font-family: "Scheherazade", Arial, sans-serif; /* Use Scheherazade font for Arabic text */
+            font-family: "Scheherazade", Arial, sans-serif;
             font-size: 36px;
-            text-align: right; /* Align text to the right */
+            text-align: right;
         }
-
         .indonesian-text {
-            font-family: "Arial", sans-serif; /* Use appropriate font for Indonesian text */
+            font-family: "Arial", sans-serif;
             color: #333333;
         }
-
-        /* Loading animation */
         .loading {
-            display: none; /* Initially hidden */
+            display: none;
             position: fixed;
             top: 0;
             left: 0;
@@ -62,7 +57,6 @@
             justify-content: center;
             align-items: center;
         }
-
         .loading-spinner {
             position: absolute;
             top: 50%;
@@ -75,7 +69,6 @@
             height: 40px;
             animation: spin 1s linear infinite;
         }
-
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
@@ -85,22 +78,51 @@
             margin-top: 10px;
             color: green;
         }
-
         .footer {
             position: fixed;
             bottom: 0;
             left: 0;
             width: 100%;
             background-color: #ffffff;
-            padding: 10px -10;
+            padding: 10px;
             text-align: center;
             z-index: 1000;
             box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
             font-size: 10px;
         }
+        .navbar {
+            margin-bottom: 20px;
+        }
+        .dark-mode {
+            background-color: #343a40;
+            color: #ffffff;
+        }
+        .dark-mode .container, .dark-mode .footer {
+            background-color: #495057;
+            color: #ffffff;
+        }
+        .dark-mode .ayah-number {
+            color: #007bff;
+        }
+        .dark-mode .indonesian-text {
+            color: #ffffff;
+        }
     </style>
 </head>
 <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Quran App</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <button class="btn btn-outline-dark" id="dark-mode-toggle">Dark Mode</button>
+                </li>
+            </ul>
+        </div>
+    </nav>
 
     <div class="loading">
         <div class="loading-spinner"></div>
@@ -109,7 +131,7 @@
 
     <div class="container">
         <h1 class="text-center">Quran App</h1>
-        
+
         <form id="quran-form">
             <div class="form-row">
                 <div class="form-group col-md-6">
@@ -118,14 +140,16 @@
                         <option value="">Select Surah</option>
                     </select>
                 </div>
-
                 <div class="form-group col-md-6">
                     <label for="juz">Select Juz:</label>
                     <select class="form-control" name="juz" id="juz">
                         <option value="">Select Juz</option>
-                        <!-- Juz options will be populated via JavaScript -->
                     </select>
                 </div>
+            </div>
+            <div class="form-group">
+                <label for="search">Search Ayah:</label>
+                <input type="text" class="form-control" id="search" placeholder="Enter ayah text">
             </div>
         </form>
 
@@ -138,7 +162,6 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            // Populate Juz options
             const juzSelect = document.getElementById('juz');
             for (let j = 1; j <= 30; j++) {
                 const option = document.createElement('option');
@@ -147,7 +170,6 @@
                 juzSelect.appendChild(option);
             }
 
-            // Fetch Surah data
             fetch('https://equran.id/api/v2/surat')
                 .then(response => response.json())
                 .then(data => {
@@ -160,9 +182,10 @@
                     });
                 });
 
-            // Add event listeners for select changes
             document.getElementById('surah').addEventListener('change', handleSelectChange);
             document.getElementById('juz').addEventListener('change', handleSelectChange);
+            document.getElementById('search').addEventListener('input', handleSearch);
+            document.getElementById('dark-mode-toggle').addEventListener('click', toggleDarkMode);
         });
 
         function handleSelectChange() {
@@ -182,11 +205,31 @@
             fetchData();
         }
 
+        function handleSearch() {
+            const searchText = document.getElementById('search').value.toLowerCase();
+            const contentDiv = document.getElementById('content');
+            const ayahs = contentDiv.querySelectorAll('.ayah');
+
+            ayahs.forEach(ayah => {
+                const arabicText = ayah.querySelector('.arabic-text').textContent.toLowerCase();
+                const indonesianText = ayah.querySelector('.indonesian-text').textContent.toLowerCase();
+                if (arabicText.includes(searchText) || indonesianText.includes(searchText)) {
+                    ayah.style.display = 'block';
+                } else {
+                    ayah.style.display = 'none';
+                }
+            });
+        }
+
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+        }
+
         function fetchData() {
             const surahSelect = document.getElementById('surah');
             const juzSelect = document.getElementById('juz');
             const contentDiv = document.getElementById('content');
-            contentDiv.innerHTML = ''; // Clear previous content
+            contentDiv.innerHTML = '';
 
             let apiUrl = '';
 
@@ -214,12 +257,16 @@
                                 <p class="ayah-number"><strong>Ayat ${ayahArabic.numberInSurah}</strong></p>
                                 <p class="ayah-text arabic-text">${ayahArabic.text}</p>
                                 <p class="ayah-text indonesian-text">${ayahTranslate.text}</p>
+                                <audio controls>
+                                    <source src="${ayahArabic.audio}" type="audio/mpeg">
+                                    Your browser does not support the audio element.
+                                </audio>
                             </div>`;
                     });
                 })
                 .catch(err => console.error(err))
                 .finally(() => {
-                    document.querySelector('.loading').style.display = 'none'; // Hide loading
+                    document.querySelector('.loading').style.display = 'none';
                 });
                 return;
             }
@@ -235,15 +282,18 @@
                                 <p class="ayah-number"><strong>Ayat ${ayah.nomorAyat}:</strong></p>
                                 <p class="ayah-text arabic-text">${ayah.teksArab}</p>
                                 <p class="ayah-text indonesian-text">${ayah.teksIndonesia}</p>
+                                <audio controls>
+                                    <source src="${ayah.audio}" type="audio/mpeg">
+                                    Your browser does not support the audio element.
+                                </audio>
                             </div>`;
                     });
                 })
                 .catch(err => console.error(err))
                 .finally(() => {
-                    document.querySelector('.loading').style.display = 'none'; // Hide loading
+                    document.querySelector('.loading').style.display = 'none';
                 });
         }
     </script>
-
 </body>
 </html>
