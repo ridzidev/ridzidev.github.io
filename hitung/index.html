@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayo Berhitung Seru!</title>
+    <style>
+        /* --- 1. Desain (CSS) --- */
+        body {
+            font-family: 'Comic Sans MS', 'Chalkboard SE', sans-serif;
+            background-color: #e0f7fa;
+            text-align: center;
+            padding: 20px;
+            color: #333;
+        }
+
+        h1 {
+            color: #ff6b6b;
+            text-shadow: 2px 2px #ffe66d;
+            margin-bottom: 5px;
+        }
+
+        p.subtitle {
+            color: #009688;
+            margin-bottom: 20px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 25px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            border: 5px solid #4ecdc4;
+        }
+
+        /* Bagian Pilihan Gambar Preset */
+        .preset-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .preset-btn {
+            border: 3px solid #ddd;
+            border-radius: 15px;
+            padding: 10px;
+            cursor: pointer;
+            background: #fff;
+            transition: all 0.3s;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .preset-btn img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        .preset-btn:hover {
+            transform: scale(1.1);
+            background-color: #fff9c4;
+        }
+
+        .preset-btn.active {
+            border-color: #ff6b6b;
+            background-color: #ffe66d;
+            transform: scale(1.1);
+        }
+
+        /* Input Group */
+        .input-group {
+            background-color: #f0f0f0;
+            padding: 15px;
+            border-radius: 15px;
+            margin: 15px 0;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        /* Kontrol Angka (+ dan -) */
+        .counter-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .btn-control {
+            width: 50px;
+            height: 50px;
+            font-size: 2rem;
+            border: none;
+            border-radius: 50%;
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 4px 0 rgba(0,0,0,0.2);
+            transition: transform 0.1s;
+        }
+
+        .btn-control:active {
+            transform: translateY(4px);
+            box-shadow: none;
+        }
+
+        .btn-minus { background-color: #ff6b6b; }
+        .btn-plus { background-color: #4ecdc4; }
+
+        input[type="number"] {
+            padding: 10px;
+            border-radius: 10px;
+            border: 2px solid #ccc;
+            font-size: 1.5rem;
+            width: 80px;
+            text-align: center;
+            font-family: inherit;
+        }
+
+        /* Tombol Upload Kecil */
+        .upload-section {
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+
+        /* Area Tampilan */
+        #display-area {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+            min-height: 120px;
+            padding: 20px;
+            border: 3px dashed #ccc;
+            border-radius: 15px;
+            background-color: #fafafa;
+        }
+
+        .item-img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes popIn {
+            0% { transform: scale(0); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .count-text {
+            font-size: 1.8rem;
+            color: #4ecdc4;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>🎈 Ayo Berhitung! 🎈</h1>
+        <p class="subtitle">Pilih gambar, lalu atur jumlahnya!</p>
+        
+        <label>Mau gambar apa?</label>
+        <div class="preset-container">
+            <div class="preset-btn" onclick="selectPreset('bebek.png', this)">
+                <img src="bebek.png" alt="Bebek" onerror="this.src='https://img.icons8.com/color/96/duck.png'">
+            </div>
+            <div class="preset-btn" onclick="selectPreset('ayam.png', this)">
+                <img src="ayam.png" alt="Ayam" onerror="this.src='https://img.icons8.com/color/96/chicken.png'">
+            </div>
+            <div class="preset-btn" onclick="selectPreset('bola.png', this)">
+                <img src="bola.png" alt="Bola" onerror="this.src='https://img.icons8.com/color/96/beach-ball.png'">
+            </div>
+        </div>
+
+        <div class="upload-section">
+            <label for="imageInput" style="font-size: 0.9rem; color: #666;">Atau pakai gambar sendiri:</label>
+            <input type="file" id="imageInput" accept="image/*">
+        </div>
+
+        <hr style="border: 1px dashed #ddd; margin: 20px 0;">
+
+        <div class="input-group">
+            <label>Ada berapa banyak?</label>
+            <div class="counter-controls">
+                <button class="btn-control btn-minus" onclick="updateCount(-1)">-</button>
+                <input type="number" id="numberInput" min="0" max="50" value="0" readonly>
+                <button class="btn-control btn-plus" onclick="updateCount(1)">+</button>
+            </div>
+        </div>
+
+        <div class="count-text" id="countText">0</div>
+        
+        <div id="display-area">
+            <p style="color: #aaa; align-self: center;">(Gambar akan muncul di sini)</p>
+        </div>
+    </div>
+
+    <script>
+        /* --- 2. Logika (JavaScript) --- */
+        const imageInput = document.getElementById('imageInput');
+        const numberInput = document.getElementById('numberInput');
+        const displayArea = document.getElementById('display-area');
+        const countText = document.getElementById('countText');
+        const presetBtns = document.querySelectorAll('.preset-btn');
+
+        // Variabel untuk menyimpan gambar yang sedang aktif
+        // Kita set default ke bebek (jika file ada) atau null
+        let currentImageSrc = null; 
+
+        // --- Fungsi A: Memilih Gambar Preset (Bebek/Ayam/Bola) ---
+        function selectPreset(imageName, element) {
+            // 1. Hapus kelas 'active' dari semua tombol
+            presetBtns.forEach(btn => btn.classList.remove('active'));
+            
+            // 2. Tambahkan kelas 'active' ke tombol yang diklik
+            element.classList.add('active');
+
+            // 3. Reset input file jika user sebelumnya upload
+            imageInput.value = ""; 
+
+            // 4. Cek apakah gambar lokal ada, jika error (tidak ada file), pakai icon online sebagai cadangan
+            // Namun secara logika kode, kita simpan nama filenya saja dulu.
+            // Trik: Kita ambil src dari elemen img di dalam tombol yang diklik 
+            // supaya kalau file lokal tidak ada, dia otomatis pakai icon online (karena onerror di HTML)
+            const imgElement = element.querySelector('img');
+            currentImageSrc = imgElement.src;
+
+            // 5. Update tampilan
+            renderImages();
+        }
+
+        // --- Fungsi B: Upload Gambar Sendiri ---
+        imageInput.addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    currentImageSrc = e.target.result;
+                    
+                    // Hapus seleksi dari tombol preset agar tidak bingung
+                    presetBtns.forEach(btn => btn.classList.remove('active'));
+                    
+                    renderImages();
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // --- Fungsi C: Mengatur Angka (+ dan -) ---
+        function updateCount(change) {
+            let currentValue = parseInt(numberInput.value) || 0;
+            let newValue = currentValue + change;
+
+            // Batasan Minimal 0 dan Maksimal 50
+            if (newValue < 0) newValue = 0;
+            if (newValue > 50) {
+                alert("Maksimal 50 dulu ya!");
+                newValue = 50;
+            }
+
+            numberInput.value = newValue;
+            renderImages();
+        }
+
+        // --- Fungsi D: Menampilkan Gambar (Render) ---
+        function renderImages() {
+            const count = parseInt(numberInput.value) || 0;
+            
+            // Update Teks Angka
+            countText.textContent = count === 0 ? "Kosong (0)" : count;
+
+            // Validasi: Jika belum pilih gambar
+            if (!currentImageSrc && count > 0) {
+                displayArea.innerHTML = '<p style="color: #ff6b6b;">Pilih dulu gambarnya di atas ya! 👆</p>';
+                return;
+            }
+
+            // Bersihkan area
+            displayArea.innerHTML = '';
+
+            if (count === 0) {
+                displayArea.innerHTML = '<p style="color: #aaa; align-self: center;">Ayo tambah angkanya!</p>';
+                return;
+            }
+
+            // Loop membuat gambar
+            for (let i = 0; i < count; i++) {
+                const img = document.createElement('img');
+                img.src = currentImageSrc;
+                img.className = 'item-img';
+                
+                // Efek delay animasi berurutan
+                img.style.animationDelay = (i * 0.03) + 's';
+                
+                displayArea.appendChild(img);
+            }
+        }
+    </script>
+</body>
+</html>
